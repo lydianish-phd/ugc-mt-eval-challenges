@@ -418,6 +418,7 @@ sbatch slurm/evaluate.slurm
 
 This runs:
 
+* `src/postprocess.py`
 * `src/evaluate.py`
 * `src/significance.py`
 * `src/aggregate.py`

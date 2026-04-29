@@ -50,11 +50,10 @@ echo "Postprocessing outputs..."
 echo "------------------------------------------------------------"
 
 for MODEL in ${MODELS[@]}; do
-    echo "Processing $MODEL"
+    echo "Postprocessing $MODEL outputs"
 
-    OUTPUT_DIR=$EXPERIMENT_DIR/outputs/${MODEL}
     python $HOME/evaluation-challenges/src/postprocess.py \
-        --output-dir $OUTPUT_DIR
+        --output-dir $EXPERIMENT_DIR/outputs/${MODEL}
 
 done
 
