@@ -46,6 +46,20 @@ echo "Guidelines: ${GUIDELINES[@]}"
 echo "Metrics: ${METRICS[@]}"
 
 echo "------------------------------------------------------------"
+echo "Postprocessing outputs..."
+echo "------------------------------------------------------------"
+
+for MODEL in ${MODELS[@]}; do
+    echo "Processing $MODEL"
+
+    OUTPUT_DIR=$EXPERIMENT_DIR/outputs/${MODEL}
+    python $HOME/evaluation-challenges/src/postprocess.py \
+        --output-dir $OUTPUT_DIR
+
+done
+
+
+echo "------------------------------------------------------------"
 echo "Evaluating translations with multiple metrics..."
 echo "------------------------------------------------------------"
 

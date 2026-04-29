@@ -59,6 +59,8 @@ if __name__ == "__main__":
             # print whether the output is different from the original output
             if diff:
                 print(f"  - postprocessed {guidelines} file is different from the original output.")
+            else:
+                print(f"  - postprocessed {guidelines} file is the same as the original output.")
             
             stats_file = f"{output_file}.stats.json"
             stats = {
@@ -81,3 +83,4 @@ if __name__ == "__main__":
             
             # write the stats to a json file
             write_json(stats_file, stats)
+            print(f"  - stats written to {stats_file}")
