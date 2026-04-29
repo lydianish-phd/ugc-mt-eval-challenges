@@ -29,6 +29,9 @@ if __name__ == "__main__":
     model_name = os.path.basename(args.model_dir)
 
     config = read_yaml(args.config_file)
+    print(f" - Loaded configuration from {args.config_file}:")
+    for key, value in config.items():
+        print(f"   {key}: {value}")
 
     dtype = torch.bfloat16 if args.dtype == "bfloat16" else torch.float16
     llm = LLM(
