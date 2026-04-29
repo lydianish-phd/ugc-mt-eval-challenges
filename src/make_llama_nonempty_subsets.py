@@ -26,7 +26,7 @@ from .prompt_templates import REFUSAL_TO_TRANSLATE
 
 GUIDELINES = [DEFAULT, ROCSMT, FOOTWEETS, MMTC, PFSMB]
 ALL_MODELS = [NLLB, LLAMA, GEMMA, TOWER]
-ALL_CORPORA = GUIDELINES[1:]  # All except DEFAULT, which is not a corpus   
+ALL_CORPORA = GUIDELINES[1:] + [f"{PFSMB}-dev"] # All except DEFAULT, which is not a corpus, and adding PFSMB-dev which is a separate corpus with the same guideline as PFSMB   
 
 def is_empty_or_refusal(output: str) -> bool:
     normalised_output = output.strip()
