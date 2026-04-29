@@ -2,7 +2,7 @@ import os, argparse, yaml
 from vllm import LLM, SamplingParams
 
 from .constants import GREEDY_CONFIG
-from .utils import read_file, read_json
+from .utils import read_file, read_yaml
 from .prompt_templates import (
     get_prompt,
     GUIDELINES
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     file_name = os.path.basename(args.input_file)
     model_name = os.path.basename(args.model_dir)
 
-    config = read_json(args.config_file)
+    config = read_yaml(args.config_file)
 
     dtype = torch.bfloat16 if args.dtype == "bfloat16" else torch.float16
     llm = LLM(
