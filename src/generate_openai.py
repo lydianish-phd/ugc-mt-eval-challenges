@@ -12,6 +12,7 @@ if __name__ == "__main__":
 	parser.add_argument("-m", "--model-name", type=str, default=GPT)
 	parser.add_argument("-g", "--guidelines", type=str, default=DEFAULT)
 	parser.add_argument("-k", "--api-key", type=str, default=None)
+	parser.add_argument("--normalize", action="store_true")
 	args = parser.parse_args()
 	
 	api_key = args.api_key or os.environ.get("OPENAI_API_KEY")
@@ -32,7 +33,7 @@ if __name__ == "__main__":
 		for sentence in sentences:
 			completion = client.chat.completions.create(
 				model=GPT,
-				messages=get_prompt(sentence, args.target_lang, args.target_lang, normalization=True, model_name=args.model_name, guidelines=args.guidelines),
+				messages=get_prompt(sentence, args.target_lang, args.target_lang, normalization=args.normalize, model_name=args.model_name, guidelines=args.guidelines),
 				temperature=0, 
 				top_p=1,
 				max_tokens=512,
