@@ -2,20 +2,20 @@
     "bleu": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 45.441218691400294,
-        "system_mean": 47.278902398958515,
-        "delta_mean": 1.8376837075582133,
-        "delta_std": 1.2770736967909444,
-        "delta_ci_low": 0.4912594647543161,
-        "delta_ci_high": 5.047923924127983,
-        "delta_median": 1.5292464826545107,
+        "sample_size": 1412,
+        "baseline_mean": 45.32631474435365,
+        "system_mean": 47.17991997093408,
+        "delta_mean": 1.8536052265804308,
+        "delta_std": 1.3823052667239186,
+        "delta_ci_low": 0.24696734434731837,
+        "delta_ci_high": 5.332025907723346,
+        "delta_median": 1.610961850315313,
         "wins": 300,
         "losses": 0,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 24.92386741446934,
-            "pvalue": 5.766114981764748e-75
+            "statistic": 23.225972633538063,
+            "pvalue": 6.486935410646211e-69
         },
         "bootstrap": {
             "pvalue_two_sided": 0.0,
@@ -27,51 +27,51 @@
     "comet": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 0.8506533435234144,
-        "system_mean": 0.8566513737492206,
-        "delta_mean": 0.005998030225806187,
-        "delta_std": 0.0013736987672883227,
-        "delta_ci_low": 0.0032788454624405744,
-        "delta_ci_high": 0.00876901180586345,
-        "delta_median": 0.005977860817106273,
-        "wins": 300,
-        "losses": 0,
+        "sample_size": 1412,
+        "baseline_mean": 0.8516814978626875,
+        "system_mean": 0.8547238236675575,
+        "delta_mean": 0.0030423258048701183,
+        "delta_std": 0.0013822795883120596,
+        "delta_ci_low": 0.00037347268650878566,
+        "delta_ci_high": 0.005711220849104877,
+        "delta_median": 0.0031243882777839405,
+        "wins": 298,
+        "losses": 2,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 75.6271559953263,
-            "pvalue": 5.681161697779034e-197
+            "statistic": 38.12154148675242,
+            "pvalue": 7.929245409269702e-117
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.0,
-            "prob_system_ge_baseline": 1.0,
-            "prob_system_le_baseline": 0.0
+            "pvalue_two_sided": 0.013333333333333334,
+            "prob_system_ge_baseline": 0.9933333333333333,
+            "prob_system_le_baseline": 0.006666666666666667
         },
         "significant_95_ci": true
     },
     "cometkiwi": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 0.7818131559485795,
-        "system_mean": 0.7804089579129179,
-        "delta_mean": -0.001404198035661649,
-        "delta_std": 0.002106112172845442,
-        "delta_ci_low": -0.005276431623070579,
-        "delta_ci_high": 0.0027677218207088254,
-        "delta_median": -0.0014028084538589836,
-        "wins": 76,
-        "losses": 224,
+        "sample_size": 1412,
+        "baseline_mean": 0.7904493345489779,
+        "system_mean": 0.7825185281994408,
+        "delta_mean": -0.007930806349537299,
+        "delta_std": 0.001886812540684636,
+        "delta_ci_low": -0.011624951411049236,
+        "delta_ci_high": -0.004376093836411568,
+        "delta_median": -0.00785523712128483,
+        "wins": 0,
+        "losses": 300,
         "ties": 0,
         "paired_ttest": {
-            "statistic": -11.548019013481452,
-            "pvalue": 9.341270473579327e-26
+            "statistic": -72.80299047304457,
+            "pvalue": 2.7714732230404695e-192
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.5066666666666667,
-            "prob_system_ge_baseline": 0.25333333333333335,
-            "prob_system_le_baseline": 0.7466666666666667
+            "pvalue_two_sided": 0.0,
+            "prob_system_ge_baseline": 0.0,
+            "prob_system_le_baseline": 1.0
         },
-        "significant_95_ci": false
+        "significant_95_ci": true
     }
 }

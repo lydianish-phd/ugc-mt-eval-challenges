@@ -2,20 +2,20 @@
     "bleu": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 798,
-        "baseline_mean": 52.745727539754,
-        "system_mean": 56.57832060622524,
-        "delta_mean": 3.832593066471242,
-        "delta_std": 1.2511620708034452,
-        "delta_ci_low": 1.4739755357201507,
-        "delta_ci_high": 6.315333855377158,
-        "delta_median": 3.8355453309487046,
+        "sample_size": 761,
+        "baseline_mean": 52.95093158353069,
+        "system_mean": 56.5585854836418,
+        "delta_mean": 3.6076539001111207,
+        "delta_std": 1.1640004398087145,
+        "delta_ci_low": 1.2800126670638685,
+        "delta_ci_high": 5.699852766238112,
+        "delta_median": 3.6366170206520074,
         "wins": 300,
         "losses": 0,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 53.056642866432036,
-            "pvalue": 3.5242418611923114e-154
+            "statistic": 53.68245266422188,
+            "pvalue": 1.4742379372718077e-155
         },
         "bootstrap": {
             "pvalue_two_sided": 0.0,
@@ -27,50 +27,50 @@
     "comet": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 798,
-        "baseline_mean": 0.8657712597711791,
-        "system_mean": 0.865832085725832,
-        "delta_mean": 6.0825954652770445e-05,
-        "delta_std": 0.004463134347010948,
-        "delta_ci_low": -0.00990187106724078,
-        "delta_ci_high": 0.008209085237598977,
-        "delta_median": 0.00019604912527215745,
-        "wins": 154,
-        "losses": 146,
+        "sample_size": 761,
+        "baseline_mean": 0.8666997401343851,
+        "system_mean": 0.8655390984404782,
+        "delta_mean": -0.0011606416939070412,
+        "delta_std": 0.0044011060998285076,
+        "delta_ci_low": -0.010131323365947409,
+        "delta_ci_high": 0.006344032052625294,
+        "delta_median": -0.0012775620790724806,
+        "wins": 111,
+        "losses": 189,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 0.23605304184499046,
-            "pvalue": 0.8135531251233585
+            "statistic": -4.5676935243804575,
+            "pvalue": 7.218000358436031e-06
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.9733333333333334,
-            "prob_system_ge_baseline": 0.5133333333333333,
-            "prob_system_le_baseline": 0.4866666666666667
+            "pvalue_two_sided": 0.74,
+            "prob_system_ge_baseline": 0.37,
+            "prob_system_le_baseline": 0.63
         },
         "significant_95_ci": false
     },
     "cometkiwi": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 798,
-        "baseline_mean": 0.7955424279380363,
-        "system_mean": 0.8049043116177633,
-        "delta_mean": 0.009361883679726965,
-        "delta_std": 0.0029872849697869215,
-        "delta_ci_low": 0.003216724656055442,
-        "delta_ci_high": 0.01527704431635695,
-        "delta_median": 0.009230607004840852,
-        "wins": 299,
-        "losses": 1,
+        "sample_size": 761,
+        "baseline_mean": 0.7973273520571749,
+        "system_mean": 0.8062170317231226,
+        "delta_mean": 0.008889679665947715,
+        "delta_std": 0.002591616672899365,
+        "delta_ci_low": 0.003818688594519515,
+        "delta_ci_high": 0.013580253144601382,
+        "delta_median": 0.009082914240726825,
+        "wins": 300,
+        "losses": 0,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 54.28092181307227,
-            "pvalue": 7.285437201797123e-157
+            "statistic": 59.41224643846572,
+            "pvalue": 1.336572181660407e-167
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.006666666666666667,
-            "prob_system_ge_baseline": 0.9966666666666667,
-            "prob_system_le_baseline": 0.0033333333333333335
+            "pvalue_two_sided": 0.0,
+            "prob_system_ge_baseline": 1.0,
+            "prob_system_le_baseline": 0.0
         },
         "significant_95_ci": true
     }

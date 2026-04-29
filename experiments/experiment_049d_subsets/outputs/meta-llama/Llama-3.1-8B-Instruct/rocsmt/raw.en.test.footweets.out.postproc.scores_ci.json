@@ -2,20 +2,20 @@
     "bleu": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 764,
-        "baseline_mean": 21.38510100184543,
-        "system_mean": 19.404435877634434,
-        "delta_mean": -1.9806651242109994,
-        "delta_std": 0.5440809279346475,
-        "delta_ci_low": -3.023733241177718,
-        "delta_ci_high": -0.9696145990212894,
-        "delta_median": -2.0146602386272736,
+        "sample_size": 724,
+        "baseline_mean": 21.643277172493956,
+        "system_mean": 20.023885703960442,
+        "delta_mean": -1.6193914685335138,
+        "delta_std": 0.5421065936950779,
+        "delta_ci_low": -2.5829262134217954,
+        "delta_ci_high": -0.5494507405653637,
+        "delta_median": -1.5873331786807672,
         "wins": 0,
         "losses": 300,
         "ties": 0,
         "paired_ttest": {
-            "statistic": -63.05335202496277,
-            "pvalue": 9.363653678182962e-175
+            "statistic": -51.74016205420468,
+            "pvalue": 3.092604269437039e-151
         },
         "bootstrap": {
             "pvalue_two_sided": 0.0,
@@ -27,51 +27,51 @@
     "comet": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 764,
-        "baseline_mean": 0.7327298839472195,
-        "system_mean": 0.7156244742861229,
-        "delta_mean": -0.017105409661096634,
-        "delta_std": 0.006411834842556974,
-        "delta_ci_low": -0.029027042259018428,
-        "delta_ci_high": -0.004864956483400952,
-        "delta_median": -0.01688025887880029,
-        "wins": 2,
-        "losses": 298,
+        "sample_size": 724,
+        "baseline_mean": 0.7379657953310051,
+        "system_mean": 0.7429312513547076,
+        "delta_mean": 0.00496545602370253,
+        "delta_std": 0.004905750373598767,
+        "delta_ci_low": -0.004689488573339426,
+        "delta_ci_high": 0.014270609207142572,
+        "delta_median": 0.004929713493223353,
+        "wins": 255,
+        "losses": 45,
         "ties": 0,
         "paired_ttest": {
-            "statistic": -46.207426337082296,
-            "pvalue": 3.520047726240194e-138
+            "statistic": 17.531308078956744,
+            "pvalue": 8.052646920868806e-48
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.013333333333333334,
-            "prob_system_ge_baseline": 0.006666666666666667,
-            "prob_system_le_baseline": 0.9933333333333333
+            "pvalue_two_sided": 0.3,
+            "prob_system_ge_baseline": 0.85,
+            "prob_system_le_baseline": 0.15
         },
-        "significant_95_ci": true
+        "significant_95_ci": false
     },
     "cometkiwi": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 764,
-        "baseline_mean": 0.7560387628853166,
-        "system_mean": 0.7343261825624874,
-        "delta_mean": -0.02171258032282921,
-        "delta_std": 0.005892057822175397,
-        "delta_ci_low": -0.033236409417543716,
-        "delta_ci_high": -0.009976991754590818,
-        "delta_median": -0.02141181266432657,
-        "wins": 0,
-        "losses": 300,
+        "sample_size": 724,
+        "baseline_mean": 0.7622296166304725,
+        "system_mean": 0.7629109978474141,
+        "delta_mean": 0.0006813812169416193,
+        "delta_std": 0.00410665632857566,
+        "delta_ci_low": -0.006759959649685679,
+        "delta_ci_high": 0.008562668215339294,
+        "delta_median": 0.0006969650764820923,
+        "wins": 175,
+        "losses": 125,
         "ties": 0,
         "paired_ttest": {
-            "statistic": -63.82709304213093,
-            "pvalue": 3.1393751654984353e-176
+            "statistic": 2.8738389400978397,
+            "pvalue": 0.004345806946355845
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.0,
-            "prob_system_ge_baseline": 0.0,
-            "prob_system_le_baseline": 1.0
+            "pvalue_two_sided": 0.8333333333333334,
+            "prob_system_ge_baseline": 0.5833333333333334,
+            "prob_system_le_baseline": 0.4166666666666667
         },
-        "significant_95_ci": true
+        "significant_95_ci": false
     }
 }

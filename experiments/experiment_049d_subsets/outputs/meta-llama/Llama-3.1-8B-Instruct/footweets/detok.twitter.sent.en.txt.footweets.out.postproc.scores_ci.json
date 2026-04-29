@@ -2,75 +2,75 @@
     "bleu": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 40.686279114946075,
-        "system_mean": 41.56878186804366,
-        "delta_mean": 0.8825027530975812,
-        "delta_std": 1.0201876828995382,
-        "delta_ci_low": -0.646150657513054,
-        "delta_ci_high": 3.4071306196486955,
-        "delta_median": 0.7680341719175523,
-        "wins": 250,
-        "losses": 50,
+        "sample_size": 1412,
+        "baseline_mean": 40.65687670544319,
+        "system_mean": 43.17745850732555,
+        "delta_mean": 2.5205818018823556,
+        "delta_std": 1.2251807819882856,
+        "delta_ci_low": 0.9317784788314963,
+        "delta_ci_high": 5.577771241963021,
+        "delta_median": 2.25649975701106,
+        "wins": 300,
+        "losses": 0,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 14.98292551268671,
-            "pvalue": 3.033726121821949e-38
+            "statistic": 35.6337269542275,
+            "pvalue": 1.2200035437961134e-109
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.3333333333333333,
-            "prob_system_ge_baseline": 0.8333333333333334,
-            "prob_system_le_baseline": 0.16666666666666666
+            "pvalue_two_sided": 0.0,
+            "prob_system_ge_baseline": 1.0,
+            "prob_system_le_baseline": 0.0
         },
-        "significant_95_ci": false
+        "significant_95_ci": true
     },
     "comet": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 0.8013767258107547,
-        "system_mean": 0.7802095988974767,
-        "delta_mean": -0.02116712691327804,
-        "delta_std": 0.005937453513187668,
-        "delta_ci_low": -0.03364697718600193,
-        "delta_ci_high": -0.009828713686614834,
-        "delta_median": -0.02132495155122255,
-        "wins": 0,
-        "losses": 300,
+        "sample_size": 1412,
+        "baseline_mean": 0.8001106802040642,
+        "system_mean": 0.833354118186787,
+        "delta_mean": 0.033243437982722765,
+        "delta_std": 0.003950060730238288,
+        "delta_ci_low": 0.025056862763838873,
+        "delta_ci_high": 0.04089083296402485,
+        "delta_median": 0.03308314258607353,
+        "wins": 300,
+        "losses": 0,
         "ties": 0,
         "paired_ttest": {
-            "statistic": -61.747917996536806,
-            "pvalue": 3.12606957376384e-172
+            "statistic": 145.7681983559462,
+            "pvalue": 8.652903378046456e-280
         },
         "bootstrap": {
             "pvalue_two_sided": 0.0,
-            "prob_system_ge_baseline": 0.0,
-            "prob_system_le_baseline": 1.0
+            "prob_system_ge_baseline": 1.0,
+            "prob_system_le_baseline": 0.0
         },
         "significant_95_ci": true
     },
     "cometkiwi": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 0.766249514134296,
-        "system_mean": 0.7287539070228557,
-        "delta_mean": -0.03749560711144022,
-        "delta_std": 0.004992877305252266,
-        "delta_ci_low": -0.047418565095754234,
-        "delta_ci_high": -0.028706170669289918,
-        "delta_median": -0.03725288332389681,
-        "wins": 0,
-        "losses": 300,
+        "sample_size": 1412,
+        "baseline_mean": 0.7677551938116381,
+        "system_mean": 0.7745860537470118,
+        "delta_mean": 0.006830859935373713,
+        "delta_std": 0.003039504557753937,
+        "delta_ci_low": 0.0013274289345732604,
+        "delta_ci_high": 0.012932567132198999,
+        "delta_median": 0.006986006271231304,
+        "wins": 297,
+        "losses": 3,
         "ties": 0,
         "paired_ttest": {
-            "statistic": -130.07388847576345,
-            "pvalue": 3.1632392552781945e-265
+            "statistic": 38.925411173578965,
+            "pvalue": 4.3895332507169215e-119
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.0,
-            "prob_system_ge_baseline": 0.0,
-            "prob_system_le_baseline": 1.0
+            "pvalue_two_sided": 0.02,
+            "prob_system_ge_baseline": 0.99,
+            "prob_system_le_baseline": 0.01
         },
         "significant_95_ci": true
     }

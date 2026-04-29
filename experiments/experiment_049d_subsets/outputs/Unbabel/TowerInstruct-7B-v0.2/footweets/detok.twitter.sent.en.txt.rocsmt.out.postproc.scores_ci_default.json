@@ -2,45 +2,45 @@
     "bleu": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 45.441218691400294,
-        "system_mean": 46.597103931657806,
-        "delta_mean": 1.1558852402575093,
-        "delta_std": 1.083494825303529,
-        "delta_ci_low": -0.40080728969736223,
-        "delta_ci_high": 3.951898475818483,
-        "delta_median": 0.8290454317412035,
-        "wins": 280,
-        "losses": 20,
+        "sample_size": 1412,
+        "baseline_mean": 45.32631474435365,
+        "system_mean": 46.41895929088788,
+        "delta_mean": 1.0926445465342243,
+        "delta_std": 1.1059294011230798,
+        "delta_ci_low": -0.34546827867504887,
+        "delta_ci_high": 3.882173933748656,
+        "delta_median": 0.7749802951860509,
+        "wins": 277,
+        "losses": 23,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 18.477725200802062,
-            "pvalue": 2.2119404427686717e-51
+            "statistic": 17.11244738849033,
+            "pvalue": 3.0466405016278336e-46
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.13333333333333333,
-            "prob_system_ge_baseline": 0.9333333333333333,
-            "prob_system_le_baseline": 0.06666666666666667
+            "pvalue_two_sided": 0.15333333333333332,
+            "prob_system_ge_baseline": 0.9233333333333333,
+            "prob_system_le_baseline": 0.07666666666666666
         },
         "significant_95_ci": false
     },
     "comet": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 0.8506533435234144,
-        "system_mean": 0.8569296340081257,
-        "delta_mean": 0.006276290484711256,
-        "delta_std": 0.0012864066066357715,
-        "delta_ci_low": 0.004016594096999093,
-        "delta_ci_high": 0.008902991550153356,
-        "delta_median": 0.006161295863917116,
+        "sample_size": 1412,
+        "baseline_mean": 0.8516814978626875,
+        "system_mean": 0.854991715087347,
+        "delta_mean": 0.003310217224659502,
+        "delta_std": 0.001237850580006955,
+        "delta_ci_low": 0.0008625029641659899,
+        "delta_ci_high": 0.005740252828948447,
+        "delta_median": 0.0033538776209773302,
         "wins": 300,
         "losses": 0,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 84.50558281110357,
-            "pvalue": 9.629142789600398e-211
+            "statistic": 46.317903871464715,
+            "pvalue": 1.8807715959555168e-138
         },
         "bootstrap": {
             "pvalue_two_sided": 0.0,
@@ -52,26 +52,26 @@
     "cometkiwi": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 0.7818131559485795,
-        "system_mean": 0.7827815814234552,
-        "delta_mean": 0.0009684254748757896,
-        "delta_std": 0.0018739832096936796,
-        "delta_ci_low": -0.0024757098138409235,
-        "delta_ci_high": 0.004865767410297926,
-        "delta_median": 0.0009288924691149836,
-        "wins": 213,
-        "losses": 87,
+        "sample_size": 1412,
+        "baseline_mean": 0.7904493345489779,
+        "system_mean": 0.7852615613942724,
+        "delta_mean": -0.005187773154705505,
+        "delta_std": 0.0017046496399136918,
+        "delta_ci_low": -0.00865554525793955,
+        "delta_ci_high": -0.002184262090803175,
+        "delta_median": -0.005197796981159075,
+        "wins": 0,
+        "losses": 300,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 8.950785242644013,
-            "pvalue": 3.822562470112425e-17
+            "statistic": -52.711633356792056,
+            "pvalue": 2.0543227222999372e-153
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.58,
-            "prob_system_ge_baseline": 0.71,
-            "prob_system_le_baseline": 0.29
+            "pvalue_two_sided": 0.0,
+            "prob_system_ge_baseline": 0.0,
+            "prob_system_le_baseline": 1.0
         },
-        "significant_95_ci": false
+        "significant_95_ci": true
     }
 }

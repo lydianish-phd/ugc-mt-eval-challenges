@@ -2,20 +2,20 @@
     "bleu": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 45.441218691400294,
-        "system_mean": 47.100445312112875,
-        "delta_mean": 1.6592266207125734,
-        "delta_std": 1.2978849785926758,
-        "delta_ci_low": -0.09535029439215435,
-        "delta_ci_high": 5.067856831410558,
-        "delta_median": 1.3269372606574805,
+        "sample_size": 1412,
+        "baseline_mean": 45.32631474435365,
+        "system_mean": 46.969113017349905,
+        "delta_mean": 1.6427982729962556,
+        "delta_std": 1.363195752862239,
+        "delta_ci_low": -0.05850442719666872,
+        "delta_ci_high": 5.045164957154557,
+        "delta_median": 1.2982653534341289,
         "wins": 290,
         "losses": 10,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 22.142677168982914,
-            "pvalue": 5.51513986449846e-65
+            "statistic": 20.87308495087038,
+            "pvalue": 2.551986981150159e-60
         },
         "bootstrap": {
             "pvalue_two_sided": 0.06666666666666667,
@@ -27,51 +27,51 @@
     "comet": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 0.8506533435234144,
-        "system_mean": 0.8569586815435404,
-        "delta_mean": 0.006305338020126023,
-        "delta_std": 0.0012524807421724004,
-        "delta_ci_low": 0.004118373181795404,
-        "delta_ci_high": 0.00878246644353805,
-        "delta_median": 0.00622319878296862,
-        "wins": 300,
-        "losses": 0,
+        "sample_size": 1412,
+        "baseline_mean": 0.8516814978626875,
+        "system_mean": 0.8549105149549735,
+        "delta_mean": 0.0032290170922861317,
+        "delta_std": 0.0012399387252793295,
+        "delta_ci_low": 0.0011319912653469405,
+        "delta_ci_high": 0.005751489060627526,
+        "delta_median": 0.0032144362059430276,
+        "wins": 299,
+        "losses": 1,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 87.19627729214824,
-            "pvalue": 1.1793706665405959e-214
+            "statistic": 45.10562940187201,
+            "pvalue": 1.9430535764313704e-135
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.0,
-            "prob_system_ge_baseline": 1.0,
-            "prob_system_le_baseline": 0.0
+            "pvalue_two_sided": 0.006666666666666667,
+            "prob_system_ge_baseline": 0.9966666666666667,
+            "prob_system_le_baseline": 0.0033333333333333335
         },
         "significant_95_ci": true
     },
     "cometkiwi": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 1556,
-        "baseline_mean": 0.7818131559485795,
-        "system_mean": 0.7837398643353068,
-        "delta_mean": 0.0019267083867273434,
-        "delta_std": 0.00195575471895584,
-        "delta_ci_low": -0.0018155287764486882,
-        "delta_ci_high": 0.0056449966849926765,
-        "delta_median": 0.001870369888210044,
-        "wins": 255,
-        "losses": 45,
+        "sample_size": 1412,
+        "baseline_mean": 0.7904493345489779,
+        "system_mean": 0.7854483681608333,
+        "delta_mean": -0.005000966388144726,
+        "delta_std": 0.0017478434360855867,
+        "delta_ci_low": -0.008761302931049536,
+        "delta_ci_high": -0.0018323276624632573,
+        "delta_median": -0.005048688300608228,
+        "wins": 0,
+        "losses": 300,
         "ties": 0,
         "paired_ttest": {
-            "statistic": 17.0632686442526,
-            "pvalue": 4.6675591958793785e-46
+            "statistic": -49.55780187389012,
+            "pvalue": 3.189684659380103e-146
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.3,
-            "prob_system_ge_baseline": 0.85,
-            "prob_system_le_baseline": 0.15
+            "pvalue_two_sided": 0.0,
+            "prob_system_ge_baseline": 0.0,
+            "prob_system_le_baseline": 1.0
         },
-        "significant_95_ci": false
+        "significant_95_ci": true
     }
 }

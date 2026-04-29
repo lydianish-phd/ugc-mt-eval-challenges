@@ -2,45 +2,45 @@
     "bleu": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 764,
-        "baseline_mean": 20.07974542727834,
-        "system_mean": 19.445522629820243,
-        "delta_mean": -0.6342227974580982,
-        "delta_std": 0.3195553922977276,
-        "delta_ci_low": -1.272233867198983,
-        "delta_ci_high": -0.004810360199165049,
-        "delta_median": -0.6361044067611914,
-        "wins": 8,
-        "losses": 292,
+        "sample_size": 724,
+        "baseline_mean": 20.442626449885285,
+        "system_mean": 19.998155349776308,
+        "delta_mean": -0.4444711001089809,
+        "delta_std": 0.3169393797599674,
+        "delta_ci_low": -1.0696369164222692,
+        "delta_ci_high": 0.180126274919489,
+        "delta_median": -0.45323194633101416,
+        "wins": 30,
+        "losses": 270,
         "ties": 0,
         "paired_ttest": {
-            "statistic": -34.376077981886176,
-            "pvalue": 6.913929166721858e-106
+            "statistic": -24.290024435203584,
+            "pvalue": 1.008511038227104e-72
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.05333333333333334,
-            "prob_system_ge_baseline": 0.02666666666666667,
-            "prob_system_le_baseline": 0.9733333333333334
+            "pvalue_two_sided": 0.2,
+            "prob_system_ge_baseline": 0.1,
+            "prob_system_le_baseline": 0.9
         },
-        "significant_95_ci": true
+        "significant_95_ci": false
     },
     "comet": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 764,
-        "baseline_mean": 0.7354578785927248,
-        "system_mean": 0.7133692325275867,
-        "delta_mean": -0.022088646065138193,
-        "delta_std": 0.005256356317859846,
-        "delta_ci_low": -0.03246573180701412,
-        "delta_ci_high": -0.01191045033272497,
-        "delta_median": -0.021811751209940555,
+        "sample_size": 724,
+        "baseline_mean": 0.7482905914352497,
+        "system_mean": 0.7390367566969102,
+        "delta_mean": -0.009253834738339512,
+        "delta_std": 0.003097719199269109,
+        "delta_ci_low": -0.015277863498674257,
+        "delta_ci_high": -0.003630797725520763,
+        "delta_median": -0.008997096623505008,
         "wins": 0,
         "losses": 300,
         "ties": 0,
         "paired_ttest": {
-            "statistic": -72.78550947018547,
-            "pvalue": 2.96643025658993e-192
+            "statistic": -51.74165539417398,
+            "pvalue": 3.068681391874038e-151
         },
         "bootstrap": {
             "pvalue_two_sided": 0.0,
@@ -52,25 +52,25 @@
     "cometkiwi": {
         "n_splits": 300,
         "sample_ratio": 0.4,
-        "sample_size": 764,
-        "baseline_mean": 0.7553908122580557,
-        "system_mean": 0.7341306732448036,
-        "delta_mean": -0.021260139013252126,
-        "delta_std": 0.0048947801808473124,
-        "delta_ci_low": -0.03184238669623415,
-        "delta_ci_high": -0.011493971224152631,
-        "delta_median": -0.021395727231396433,
-        "wins": 0,
-        "losses": 300,
+        "sample_size": 724,
+        "baseline_mean": 0.769269224271096,
+        "system_mean": 0.7623637677538407,
+        "delta_mean": -0.006905456517255325,
+        "delta_std": 0.0027078085070989686,
+        "delta_ci_low": -0.012573047973297915,
+        "delta_ci_high": -0.001741393363278197,
+        "delta_median": -0.006965709778156082,
+        "wins": 2,
+        "losses": 298,
         "ties": 0,
         "paired_ttest": {
-            "statistic": -75.23042830608905,
-            "pvalue": 2.5318345360551154e-196
+            "statistic": -44.17078056290596,
+            "pvalue": 4.511998950783849e-133
         },
         "bootstrap": {
-            "pvalue_two_sided": 0.0,
-            "prob_system_ge_baseline": 0.0,
-            "prob_system_le_baseline": 1.0
+            "pvalue_two_sided": 0.013333333333333334,
+            "prob_system_ge_baseline": 0.006666666666666667,
+            "prob_system_le_baseline": 0.9933333333333333
         },
         "significant_95_ci": true
     }
