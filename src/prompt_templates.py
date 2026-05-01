@@ -302,6 +302,7 @@ def get_preambles(source_lang, target_lang):
         "Translation provided:",
         "Translation:",
         f"{target_lang}:",
+        f"{target_lang} translation:",
         "I'll translate the text according to the provided guidelines.",
         "I'll translate the text according to the guidelines.",
         "Traduction :",
@@ -314,19 +315,51 @@ def get_preambles(source_lang, target_lang):
         "Übersetzt:",
         "Übersetzung:",
         "Übersetzung des Textes:",
-        "Übersetzung des vorherigen Textes:"
+        "Übersetzung des vorherigen Textes:",
     ]
     return preambles
 
-def get_explanations(guidelines):
+def get_explanations(source_lang, target_lang, guidelines):
     explanations = [
         "(Note:",
         "Note:",
         "Notez que",
         "Le guide de traduction devrait que",
         "1. Korrigieren Sie",
-        "English: The first step is to identify the problem.",
-        "English: The following is a translation of the text:"
+        f"{source_lang}: The first step is to identify the problem.",
+        f"{source_lang}: The following is a translation of the text:",
+        f"Translation in {source_lang}:",
+        "Translation in Portuguese:",
+        "Übertragung ins Deutsche",
+        "Translation notes:",
+        "Translation explanation:",
+        "---  Source text",
+        "Explanation:",
+        "(The text",
+        "(the translation",
+        "(Translation",
+        "In this example,",
+        "In this translation,",
+        "In this sentence,",
+        "In this text,",
+        "In this response,",
+        "In this case,",
+        "In this context,",
+        "I have translated",
+        "I have provided",
+        "I have added",
+        "I added",
+        "Both translations are",
+        "No translation needed",
+        "no translation needed",
+        "The translation",
+        "This translation",
+        "This translates to",
+        "Alternative translation",
+        "The hashtag",
+        "The underscore",
+        "The text",
+        f"In {source_lang},",
     ]
     guidelines_list = GUIDELINES_LISTS.get(guidelines, [])
     if guidelines_list:
@@ -335,26 +368,59 @@ def get_explanations(guidelines):
         ]
     return explanations
 
+def get_start_special_tokens():
+    return [
+        "<|start_header_id|>",
+        "<|start_of_turn|>",
+        "<|im_start|>",
+        "</s>",
+        "<s>",
+        "---  [INST]",
+        "[INST]",
+    ]
+
+def get_end_special_tokens():
+    return [
+        "<|end_header_id|>",
+        "<|eot_id|>",
+        "<|im_end|>",
+        "[/INST]",
+    ]
+
+def ignore_at_beginning(text, preambles):
+    for preamble in preambles:
+        # case-insensitive search for the preamble
+        index = text.lower().find(preamble.lower())
+        if index != -1:
+            return text[index + len(preamble):].strip()
+    return text
+
+def ignore_at_end(text, explanations):
+    for explanation in explanations:
+        # case-sensitive search for the explanation
+        index = text.find(explanation)
+        if index != -1:
+            return text[:index].strip()
+    return text
+
 def extract_translation(llm_output, source_lang, target_lang, guidelines):
     text = llm_output.strip()
     if text:
+        text = ignore_at_end(text, get_start_special_tokens())
+        explanations = get_explanations(source_lang, target_lang, guidelines)
+        text = ignore_at_end(text, explanations)
+
+        text = ignore_at_beginning(text, get_end_special_tokens())
         preambles = get_preambles(source_lang, target_lang)
-        for preamble in preambles:
-            # case-insensitive search for the preamble
-            index = text.lower().find(preamble.lower())
-            if index != -1:
-                return text[index + len(preamble):].strip()
+        text = ignore_at_beginning(text, preambles)
+
         wrong_prefix = f"{source_lang}:" # found in some Tower outputs
         if text.lower().startswith(wrong_prefix.lower()):
             return text[len(wrong_prefix):].strip()
-        explanations = get_explanations(guidelines)
-        for explanation in explanations:
-            # case-sensitive search for the explanation
-            index = text.find(explanation)
-            if index != -1:
-                return text[:index].strip()
+
         if _contains_any_substring(text, get_refusals()):
             return REFUSAL_TO_TRANSLATE
+
         if _contains_any_substring(text, get_failures()):
             return ""
     return text

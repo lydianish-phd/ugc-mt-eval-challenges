@@ -49,7 +49,7 @@ if __name__ == "__main__":
 
             diff = False
             # read the input file line by line and extract the using the extract_translation function and write to the output file
-            with open(input_file, "r") as fin, open(output_file, "w") as fout:
+            with open(input_file, "r", encoding="utf-8") as fin, open(output_file, "w", encoding="utf-8") as fout:
                 for llm_output in fin:
                     translation = extract_translation(llm_output, source_lang, target_lang, guidelines)
                     fout.write(translation + "\n")
@@ -69,7 +69,7 @@ if __name__ == "__main__":
                 "usernames": 0,
                 "hashtags": 0
             }
-            with open(output_file, "r") as f:
+            with open(output_file, "r", encoding="utf-8") as f:
                 for line in f:
                     stats["lines"] += 1
                     found = find_usernames_hashtags_urls(line)

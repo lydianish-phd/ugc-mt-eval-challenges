@@ -1,9 +1,9 @@
 {
     "lines": 777,
-    "urls": 50,
-    "usernames": 75,
-    "hashtags": 189,
-    "urls_per_line": 0.06435006435006435,
-    "usernames_per_line": 0.09652509652509653,
-    "hashtags_per_line": 0.24324324324324326
+    "urls": 46,
+    "usernames": 62,
+    "hashtags": 160,
+    "urls_per_line": 0.059202059202059204,
+    "usernames_per_line": 0.07979407979407979,
+    "hashtags_per_line": 0.2059202059202059
 }
