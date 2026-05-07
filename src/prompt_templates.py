@@ -1,7 +1,7 @@
 # Description: Contains the LLM prompt templates for the UGC translation evaluation challenges.
 from .constants import (
+    GRANITE,
     MISTRAL,
-    PHI,
     QWEN,
     TOWER,
     LLAMA,
@@ -156,12 +156,11 @@ def get_mistral_template(user_message, system_message=TRANSLATION_SYSTEM_MESSAGE
         f"{user_message}[/INST]"
     )
 
-def get_phi_template(user_message, system_message=TRANSLATION_SYSTEM_MESSAGE):
+def get_granite_template(user_message, system_message=TRANSLATION_SYSTEM_MESSAGE):
     return (
-        f"<|endoftext|><|user|>\n"
-        f"{system_message} {user_message}<|end|>\n"
-        f"<|assistant|>"
-
+        f"<|start_of_role|>system<|end_of_role|>{system_message}<|end_of_text|>\n"
+        f"<|start_of_role|>user<|end_of_role|>{user_message}<|end_of_text|>\n"
+        f"<|start_of_role|>assistant<|end_of_role|>"
     )
 
 def get_chatml_template(user_message, system_message):
@@ -190,7 +189,7 @@ def get_chat_template(model_name):
         get_model_name(TOWER): get_tower_template,
         get_model_name(QWEN): get_qwen_template,
         get_model_name(MISTRAL): get_mistral_template,
-        get_model_name(PHI): get_phi_template,
+        get_model_name(GRANITE): get_granite_template,
     }
     return template_map.get(model_name, get_gpt_template)
 

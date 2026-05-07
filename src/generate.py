@@ -21,6 +21,7 @@ if __name__ == "__main__":
     parser.add_argument("-g", "--guidelines", type=str, nargs="+", default=["default"])
     parser.add_argument("--overwrite", help="whether to overwrite existing output files", default=False, action="store_true")    
     parser.add_argument("--dtype", type=str, choices=["bfloat16", "float16"], default="bfloat16", help="Data type for model weights.")
+    parser.add_argument("--gpu-memory-utilization", type=float, default=0.92, help="GPU memory utilization for vLLM.")
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
@@ -38,6 +39,7 @@ if __name__ == "__main__":
         max_model_len=config["max_model_len"],
         dtype=dtype,
         tensor_parallel_size=torch.cuda.device_count(),
+        gpu_memory_utilization=args.gpu_memory_utilization,
         trust_remote_code=True,
     )
     sampling_params = SamplingParams(
@@ -66,6 +68,7 @@ if __name__ == "__main__":
 
         with open(output_file, "w") as f:
             for output in outputs:
+                # generated_text = output.outputs[0].text.split('\n')[0].strip()
                 generated_text = output.outputs[0].text.strip().replace("\n", " ")
                 f.write(f"{generated_text}\n")
 
