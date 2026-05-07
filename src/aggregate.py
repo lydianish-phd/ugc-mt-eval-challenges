@@ -141,7 +141,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input-dir", help="path to experiment directory", type=str)
     parser.add_argument("-c", "--corpora", type=str, nargs="+", default=CORPORA)
-    parser.add_argument("-m", "--models", type=str, nargs="+", default=[NLLB, LLAMA, GEMMA, TOWER, QWEN, MISTRAL, GRANITE])
+    parser.add_argument("-m", "--models", type=str, nargs="+", default=[NLLB, GEMMA, GRANITE, LLAMA, MISTRAL, QWEN, TOWER])
     parser.add_argument(
         "--comparison-mode",
         type=str,

@@ -14,6 +14,7 @@ except Exception:  # pragma: no cover
     ttest_rel = None
 
 from .constants import (
+    GRANITE,
     MISTRAL,
     QWEN,
     TOWER,
@@ -284,7 +285,7 @@ def main() -> None:
     parser.add_argument("-i", "--input-dir", type=str, required=True, help="Path to experiment directory")
     parser.add_argument("-d", "--data-dir", type=str, required=True, help="Parent directory containing all corpora files referenced in corpora.yaml")
     parser.add_argument("-c", "--corpora", type=str, nargs="+", default=GUIDELINES[1:], help="One or more corpora to compare.")
-    parser.add_argument("-m", "--models", type=str, nargs="+", default=[NLLB, LLAMA, GEMMA, TOWER, QWEN, MISTRAL])
+    parser.add_argument("-m", "--models", type=str, nargs="+", default=[NLLB, GEMMA, GRANITE, LLAMA, MISTRAL, QWEN, TOWER])
     parser.add_argument("-g", "--guidelines", type=str, nargs="+", default=GUIDELINES)
     parser.add_argument(
         "--metrics",

@@ -24,23 +24,24 @@ CORPUS_LABELS = {
     PMUMT: "PMUMT",
 }
 
-NLLB = "facebook/nllb-200-3.3B"
-LLAMA = "meta-llama/Llama-3.1-8B-Instruct"
 GEMMA = "google/gemma-2-9b-it"
-TOWER = "Unbabel/TowerInstruct-7B-v0.2"
-QWEN = "Qwen/Qwen2.5-7B-Instruct"
-MISTRAL = "mistralai/Mistral-7B-Instruct-v0.3"
-GRANITE = "ibm-granite/granite-4.1-8b"
 GPT = "gpt-4o-mini"
+GRANITE = "ibm-granite/granite-4.1-8b"
+LLAMA = "meta-llama/Llama-3.1-8B-Instruct"
+MISTRAL = "mistralai/Mistral-7B-Instruct-v0.3"
+NLLB = "facebook/nllb-200-3.3B"
+QWEN = "Qwen/Qwen2.5-7B-Instruct"
+TOWER = "Unbabel/TowerInstruct-7B-v0.2"
     
 MODEL_LABELS = {
-    NLLB: "NLLB-3B",
-    LLAMA: "LLaMA-3.1-8B",
     GEMMA: "Gemma-2-9B",
-    TOWER: "Tower-0.2-7B",
-    QWEN: "Qwen-2.5-7B",
-    MISTRAL: "Mistral-0.3-7B",
+    GPT: "GPT-4o-mini",
     GRANITE: "Granite-4.1-8B",
+    LLAMA: "LLaMA-3.1-8B",
+    MISTRAL: "Mistral-0.3-7B",
+    NLLB: "NLLB-3B",
+    QWEN: "Qwen-2.5-7B",
+    TOWER: "Tower-0.2-7B",
 }
 
 BLEU = "bleu"
