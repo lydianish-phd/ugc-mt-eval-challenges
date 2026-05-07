@@ -1,0 +1,27 @@
+{
+    "bleu": {
+        "n_splits": 300,
+        "sample_ratio": 0.4,
+        "sample_size": 311,
+        "baseline_mean": 36.547118151617035,
+        "system_mean": 37.618970640033425,
+        "delta_mean": 1.0718524884163867,
+        "delta_std": 2.034840667287606,
+        "delta_ci_low": -2.729278590043122,
+        "delta_ci_high": 5.070808651127831,
+        "delta_median": 1.0823675569959512,
+        "wins": 211,
+        "losses": 89,
+        "ties": 0,
+        "paired_ttest": {
+            "statistic": 9.123579049710008,
+            "pvalue": 1.1049666299879369e-17
+        },
+        "bootstrap": {
+            "pvalue_two_sided": 0.5933333333333334,
+            "prob_system_ge_baseline": 0.7033333333333334,
+            "prob_system_le_baseline": 0.2966666666666667
+        },
+        "significant_95_ci": false
+    }
+}
