@@ -311,7 +311,7 @@ def main():
         "--output-dir",
         type=str,
         default=None,
-        help="Output directory. Defaults to <sample-dir parent>/ab_<corpus>_<models>.",
+        help="Output directory. Defaults to <sample-dir parent>/annotations/ab_<corpus>_<models>.",
     )
     parser.add_argument(
         "--data-dir",
@@ -367,7 +367,7 @@ def main():
         model_tag = "_".join(sanitize_model_name(m) for m in args.models)
         output_dir_name = f"ab_{args.corpus}_{model_tag}"
 
-        output_dir = parent_dir / output_dir_name
+        output_dir = parent_dir / "annotations" / output_dir_name
     
     guided_guideline = args.guided_guideline or f"{get_guideline_from_corpus(args.corpus)}"
 
