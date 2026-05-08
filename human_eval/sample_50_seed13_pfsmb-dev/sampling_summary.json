@@ -1,0 +1,60 @@
+{
+    "n_available_annotated_sentences": 271,
+    "n_sampled_sentences": 50,
+    "corpus_counts": {
+        "pfsmb-dev": 50
+    },
+    "available_label_counts": {
+        "atypical_punctuation": 39,
+        "capitalisation": 26,
+        "emoticons_emojis": 40,
+        "grammar": 108,
+        "hashtags_subreddits": 111,
+        "informal_abbreviations": 123,
+        "informal_acronyms": 45,
+        "spelling": 102,
+        "urls_mentions_rts": 111,
+        "word_elongation": 39
+    },
+    "sampled_label_counts": {
+        "atypical_punctuation": 19,
+        "capitalisation": 11,
+        "emoticons_emojis": 10,
+        "grammar": 21,
+        "hashtags_subreddits": 26,
+        "informal_abbreviations": 27,
+        "informal_acronyms": 15,
+        "spelling": 20,
+        "urls_mentions_rts": 26,
+        "word_elongation": 19
+    },
+    "sampled_for_label_counts": {
+        "atypical_punctuation": 5,
+        "capitalisation": 5,
+        "emoticons_emojis": 5,
+        "grammar": 5,
+        "hashtags_subreddits": 5,
+        "informal_abbreviations": 5,
+        "informal_acronyms": 5,
+        "spelling": 5,
+        "urls_mentions_rts": 5,
+        "word_elongation": 5
+    },
+    "corpora": [
+        "pfsmb-dev"
+    ],
+    "seed": 13,
+    "requested_n_samples": 50,
+    "labels_used_for_stratification": [
+        "atypical_punctuation",
+        "capitalisation",
+        "emoticons_emojis",
+        "grammar",
+        "hashtags_subreddits",
+        "informal_abbreviations",
+        "informal_acronyms",
+        "spelling",
+        "urls_mentions_rts",
+        "word_elongation"
+    ]
+}

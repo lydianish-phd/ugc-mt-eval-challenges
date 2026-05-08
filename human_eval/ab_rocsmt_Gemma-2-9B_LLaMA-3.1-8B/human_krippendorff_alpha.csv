@@ -1,0 +1,3 @@
+question,n_items,n_annotators,krippendorff_alpha,note
+overall_pref,32,3,0.49090909090909085,
+guideline_pref,43,3,0.2152777777777778,

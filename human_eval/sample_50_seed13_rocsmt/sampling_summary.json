@@ -1,0 +1,56 @@
+{
+    "n_available_annotated_sentences": 845,
+    "n_sampled_sentences": 50,
+    "corpus_counts": {
+        "rocsmt": 50
+    },
+    "available_label_counts": {
+        "atypical_punctuation": 665,
+        "capitalisation": 482,
+        "emoticons_emojis": 2,
+        "grammar": 157,
+        "informal_abbreviations": 286,
+        "informal_acronyms": 112,
+        "self_censored_profanity": 3,
+        "spelling": 217,
+        "word_elongation": 62
+    },
+    "sampled_label_counts": {
+        "atypical_punctuation": 42,
+        "capitalisation": 33,
+        "emoticons_emojis": 2,
+        "grammar": 16,
+        "informal_abbreviations": 25,
+        "informal_acronyms": 12,
+        "self_censored_profanity": 3,
+        "spelling": 16,
+        "word_elongation": 11
+    },
+    "sampled_for_label_counts": {
+        "atypical_punctuation": 12,
+        "capitalisation": 6,
+        "emoticons_emojis": 2,
+        "grammar": 6,
+        "informal_abbreviations": 6,
+        "informal_acronyms": 5,
+        "self_censored_profanity": 3,
+        "spelling": 5,
+        "word_elongation": 5
+    },
+    "corpora": [
+        "rocsmt"
+    ],
+    "seed": 13,
+    "requested_n_samples": 50,
+    "labels_used_for_stratification": [
+        "atypical_punctuation",
+        "capitalisation",
+        "emoticons_emojis",
+        "grammar",
+        "informal_abbreviations",
+        "informal_acronyms",
+        "self_censored_profanity",
+        "spelling",
+        "word_elongation"
+    ]
+}
