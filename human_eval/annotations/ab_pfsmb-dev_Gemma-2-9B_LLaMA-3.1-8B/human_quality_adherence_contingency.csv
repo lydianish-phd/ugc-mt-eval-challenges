@@ -1,0 +1,10 @@
+level,overall_pref,guideline_pref,count,proportion
+all,guided,guided,12,0.24
+all,guided,tie,7,0.14
+all,guided,default,0,0.0
+all,tie,guided,6,0.12
+all,tie,tie,17,0.34
+all,tie,default,2,0.04
+all,default,guided,0,0.0
+all,default,tie,6,0.12
+all,default,default,0,0.0

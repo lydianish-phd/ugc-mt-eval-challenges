@@ -1,0 +1,11 @@
+level,question,preference,count,proportion
+all,majority_overall_pref,guided,15,0.3
+all,majority_overall_pref,tie,27,0.54
+all,majority_overall_pref,default,8,0.16
+all,majority_overall_pref,cannot_judge,0,0.0
+all,majority_overall_pref,missing,0,0.0
+all,majority_guideline_pref,guided,6,0.12
+all,majority_guideline_pref,tie,40,0.8
+all,majority_guideline_pref,default,4,0.08
+all,majority_guideline_pref,cannot_judge,0,0.0
+all,majority_guideline_pref,missing,0,0.0

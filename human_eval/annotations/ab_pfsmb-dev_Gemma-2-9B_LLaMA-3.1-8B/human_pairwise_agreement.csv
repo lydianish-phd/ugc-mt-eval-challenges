@@ -1,0 +1,7 @@
+question,annotator_1,annotator_2,n_items,cohen_kappa,percent_agreement
+overall_pref,annotator_1,annotator_2,46,0.3793103448275862,0.6086956521739131
+overall_pref,annotator_1,annotator_3,47,0.40464461646727656,0.6170212765957447
+overall_pref,annotator_2,annotator_3,46,0.4808126410835214,0.6739130434782609
+guideline_pref,annotator_1,annotator_2,47,0.3777258566978192,0.6382978723404256
+guideline_pref,annotator_1,annotator_3,48,0.37300435413642963,0.625
+guideline_pref,annotator_2,annotator_3,49,0.40437601296596437,0.6938775510204082

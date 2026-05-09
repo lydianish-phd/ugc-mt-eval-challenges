@@ -1,0 +1,7 @@
+level,pattern,count,proportion
+all,guided_wins_both,5,0.1
+all,guided_adherence_quality_tie,0,0.0
+all,guided_adherence_default_quality,1,0.02
+all,default_wins_both,0,0.0
+all,tie_on_both,25,0.5
+all,guided_quality_default_adherence,2,0.04

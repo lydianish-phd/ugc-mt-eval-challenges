@@ -1,0 +1,5 @@
+level,question,preference,count,proportion_excluding_ties,n_excluding_ties
+all,majority_overall_pref,guided,15,0.6521739130434783,23
+all,majority_overall_pref,default,8,0.34782608695652173,23
+all,majority_guideline_pref,guided,6,0.6,10
+all,majority_guideline_pref,default,4,0.4,10
