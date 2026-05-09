@@ -5,6 +5,8 @@ from collections import Counter
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+
+from .constants import CORPUS_LABELS
 from .utils import read_csv, write_csv
 
 VALID_LABELS = {"default", "guided", "tie"}
@@ -19,7 +21,7 @@ plt.rcParams.update({
     "axes.labelsize": 11,
     "xtick.labelsize": 10,
     "ytick.labelsize": 10,
-    "legend.fontsize": 11,
+    "legend.fontsize": 10,
     "pdf.fonttype": 42,
     "ps.fonttype": 42,
 })
@@ -180,13 +182,13 @@ def group_rows(rows: list[dict], group_col: str | None) -> dict[str, list[dict]]
     return groups
 
 
-def plot_preference_distribution(rows: list[dict], output_path: Path) -> None:
+def plot_preference_distribution(rows: list[dict], output_path: Path, title: str) -> None:
     questions = [
         ("majority_overall_pref", "Overall quality"),
         ("majority_guideline_pref", "Guideline adherence"),
     ]
 
-    fig, ax = plt.subplots(figsize=(5.2, 3.2))
+    fig, ax = plt.subplots(figsize=(4.1, 3))
 
     x_positions = list(range(len(questions)))
     bottoms = [0.0 for _ in questions]
@@ -203,7 +205,7 @@ def plot_preference_distribution(rows: list[dict], output_path: Path) -> None:
             total = sum(counts.values())
             values.append(100 * counts[pref] / total if total else 0.0)
 
-        bars = ax.bar(x_positions, values, bottom=bottoms, label=pref)
+        bars = ax.bar(x_positions, values, bottom=bottoms, label=pref, width=0.5)
 
         for bar, value, bottom in zip(bars, values, bottoms):
             if value > 0:
@@ -222,14 +224,15 @@ def plot_preference_distribution(rows: list[dict], output_path: Path) -> None:
     ax.set_xticklabels([label for _, label in questions])
     ax.set_ylabel("Percentage")
     ax.set_ylim(0, 100)
-    ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.5, 1.22), ncol=3)
+    ax.legend(frameon=False, loc="center left", bbox_to_anchor=(0.98, 0.5))
+    ax.set_title(title)
 
     fig.tight_layout()
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output_path, format="pdf", bbox_inches="tight", pad_inches=0.02)
     plt.close(fig)
 
-def plot_quality_adherence_heatmap(rows: list[dict], output_path: Path) -> None:
+def plot_quality_adherence_heatmap(rows: list[dict], output_path: Path, title: str) -> None:
     matrix = []
 
     valid_pairs = []
@@ -258,6 +261,7 @@ def plot_quality_adherence_heatmap(rows: list[dict], output_path: Path) -> None:
 
     ax.set_xlabel("Guideline adherence preference")
     ax.set_ylabel("Overall quality preference")
+    ax.set_title(title)
 
     for i, overall in enumerate(PREFERENCE_ORDER):
         for j, adherence in enumerate(PREFERENCE_ORDER):
@@ -282,7 +286,7 @@ def main():
         "--group-by",
         type=str,
         default=None,
-        choices=[None, "model", "corpus"],
+        choices=[None, "model"],
         help="Optionally compute summaries by model or corpus.",
     )
     args = parser.parse_args()
@@ -305,6 +309,9 @@ def main():
 
     plots_dir = human_eval_dir / "preference_plots"
 
+    # The dir is name is like ab_rocsmt_... or ab_pfsmb-dev_..., so we can extract the corpus name from it.
+    corpus = human_eval_dir.name.split("_")[1].split("-")[0] if "_" in human_eval_dir.name else None
+
     for level, group in groups.items():
         for pref_col in ["majority_overall_pref", "majority_guideline_pref"]:
             all_pref_rows.extend(preference_distribution(group, pref_col, level))
@@ -314,13 +321,16 @@ def main():
         all_contingency_rows.extend(quality_adherence_table(group, level))
 
         safe_level = level.replace("/", "_").replace(" ", "_")
+
         plot_preference_distribution(
             group,
             plots_dir / f"preference_distribution_{safe_level}.pdf",
+            title=CORPUS_LABELS.get(corpus, corpus) if corpus else safe_level
         )
         plot_quality_adherence_heatmap(
             group,
             plots_dir / f"quality_vs_adherence_{safe_level}.pdf",
+            title=CORPUS_LABELS.get(corpus, corpus) if corpus else safe_level
         )
 
     write_csv(
