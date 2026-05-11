@@ -1,5 +1,5 @@
 human_question,metric,n_items,cohen_kappa,percent_agreement
-majority_overall_pref,comet,50,0.11504424778761069,0.44
-majority_overall_pref,cometkiwi,50,0.26376440460947503,0.54
-majority_guideline_pref,comet,50,0.40944881889763785,0.64
-majority_guideline_pref,cometkiwi,50,0.1688829787234042,0.5
+majority_overall_pref,comet,50,0.259478672985782,0.5
+majority_overall_pref,cometkiwi,50,0.28393524283935256,0.54
+majority_guideline_pref,comet,50,0.3514150943396227,0.56
+majority_guideline_pref,cometkiwi,50,0.14122137404580148,0.46
