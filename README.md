@@ -34,7 +34,7 @@ The experiments cover four UGC translation datasets with distinct source styles 
 We compare a strong encoder-decoder baseline with a suite of instruction-tuned decoder-only models.
 
 - Baseline: `NLLB-200-3.3B`
-- Instruction-tuned LLMs: `Gemma-2-9B`, `Granite-4.1`, `LLaMA-3.1-8B`, `Mistral-7B-Instruct-v0.3`, `Qwen-2.5-7B-Instruct`, `Tower-4.1`
+- Instruction-tuned LLMs: `Gemma-2-9B`, `Granite-4.1-8B`, `LLaMA-3.1-8B`, `Mistral-7B-v0.3`, `Qwen-2.5-7B`, `Tower-7B-v0.2`
 - Note: `Tower-4.1` is specifically fine-tuned for translation tasks
 
 ### Inference Details
@@ -86,10 +86,10 @@ For the human evaluation methodology and package structure, see [`human_eval/REA
 
 ## Results Summary
 
-- `Tower-4.1` is the best-performing default model on most datasets, except `RoCSMT`, where `Gemma-2-9B` is stronger.
+- `Tower-7B-v0.2` is the best-performing default model on most datasets, except `RoCSMT`, where `Gemma-2-9B` is stronger.
 - Most instruction-tuned LLMs outperform `NLLB-200-3.3B` on the UGC datasets, with the main exception being `MMTC`.
 - `LLaMA-3.1-8B` shows substantial refusal behavior and is often harmed by guideline prompting.
-- `Gemma-2-9B`, `Granite-4.1`, `Mistral-7B-Instruct-v0.3`, and `Qwen-2.5-7B-Instruct` adapt more effectively to guideline prompts.
+- `Gemma-2-9B`, `Granite-4.1-8B`, `Mistral-7B-v0.3`, and `Qwen-2.5-7B` adapt more effectively to guideline prompts.
 - Matching corpus-specific guidelines usually improve `COMET` scores, while mismatched guidelines can still transfer positively when the source styles are similar.
 - `COMETkiwi` tends to favor more standardised outputs and is less robust to highly non-standard UGC translations.
 - Human evaluation confirms that guided outputs are preferred more often than default outputs for overall quality and guideline adherence.
