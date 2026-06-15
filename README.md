@@ -1,460 +1,134 @@
-# Evaluation Challenges
+﻿# When the Gold Standard Isn't Necessarily Standard: Challenges of Evaluating the Translation of User-Generated Content
 
-## Part I: Inference on Jean Zay (H100 / gpu_p6)
+[Accepted at EAMT 2026 — Preprint](https://arxiv.org/abs/2512.17738)
 
-This repository contains the code and data for the evaluation challenge experiments. The immediate goal is to run **inference** for the two newly added models:
+Authors: Lydia Nishimwe, Benoît Sagot, Rachel Bawden
 
-- `Qwen/Qwen2.5-7B-Instruct`
-- `mistralai/Mistral-7B-Instruct-v0.3`
+This repository contains the code, data organization, and experiment assets for a study on translating user-generated content (UGC) with both a strong neural machine translation baseline and instruction-tuned large language models.
 
-These model IDs are defined in `src/constants.py`.
+## Overview
 
----
+We evaluate translation performance on four parallel UGC datasets and measure the effect of incorporating corpus-specific translation guidelines to control the style of model outputs.
 
-### 1. Load the Jean Zay environment
+Key components:
 
-On Jean Zay (H100 / gpu_p6), load the required modules:
+- Baseline: `NLLB-200-3.3B`
+- Instruction-tuned LLMs: `Gemma-2-9B`, `Granite-4.1`, `LLaMA-3.1-8B`, `Mistral-7B-Instruct-v0.3`, `Qwen-2.5-7B-Instruct`, and `Tower-4.1`
+- Controlled generation with 12 corpus-specific translation guidelines
+- Automatic evaluation with reference-based `COMET`, reference-less `COMETkiwi`, and surface-level `BLEU`
+- Human evaluation for `RoCSMT` and `PFSMB` datasets
 
-```bash
-module purge
-module load arch/h100
-module load pytorch-gpu/py3/2.5.0
-source ~/.bashrc
-````
+## Experimental Setup
 
----
+### Datasets
 
-### 2. Check whether `vllm` is already available
+The experiments cover four UGC translation datasets with distinct source styles and target strategies. The datasets include:
 
-```bash
-python -c "import vllm; print(vllm.__version__)"
+- `RoCSMT` (English → French)
+- `PFSMB` (French → English), as well as the PMUMT subset from Rosales-Nuñez et al. (2021)
+- `Footweets`
+- `MMTC`
+
+### Translation Models
+
+We compare a strong encoder-decoder baseline with a suite of instruction-tuned decoder-only models.
+
+- Baseline: `NLLB-200-3.3B`
+- Instruction-tuned LLMs: `Gemma-2-9B`, `Granite-4.1`, `LLaMA-3.1-8B`, `Mistral-7B-Instruct-v0.3`, `Qwen-2.5-7B-Instruct`, `Tower-4.1`
+- Note: `Tower-4.1` is specifically fine-tuned for translation tasks
+
+### Inference Details
+
+- `NLLB-200-3.3B`: beam search with beam size 5
+- LLMs: greedy sampling with `vLLM`, BF16 mixed precision, maximum context length 2,048
+- One source sentence per prompt
+- Post-processing extracts translated sentences from verbose outputs and detects refusals to translate
+- Maximum output length capped at 512 tokens for all models
+
+### Controlled Generation
+
+To guide outputs toward the style of each corpus, we use a list of 12 translation guidelines derived from our dataset-specific taxonomy.
+
+Each prompting configuration is defined by:
+
+- a model
+- a set of translation guidelines
+
+We compare:
+
+1. Default prompting without any guidelines
+2. Matching guidelines: corpus-specific guidelines applied to the same corpus
+3. Mismatching guidelines: guidelines from a different corpus applied to the target corpus
+
+### Evaluation Metrics
+
+Automatic evaluation uses:
+
+- `COMET` (reference-based)
+- `COMETkiwi` (reference-less)
+- `BLEU` via `sacrebleu`
+
+Implementation details:
+
+- Empty outputs are scored as zero
+- Scores are reported as percentages
+- Statistical significance is assessed with paired bootstrap resampling: 300 samples, sampling ratio 0.4
+- For each metric, we compute the mean score difference, 95% confidence intervals, and p-values relative to the default no-guideline baseline
+
+### Human Evaluation
+
+Human evaluation was conducted on two UGC datasets:
+
+- `RoCSMT` (English → French)
+- `PFSMB` (French → English)
+
+For the human evaluation methodology and package structure, see [`human_eval/README.md`](human_eval/README.md).
+
+## Results Summary
+
+- `Tower-4.1` is the best-performing default model on most datasets, except `RoCSMT`, where `Gemma-2-9B` is stronger.
+- Most instruction-tuned LLMs outperform `NLLB-200-3.3B` on the UGC datasets, with the main exception being `MMTC`.
+- `LLaMA-3.1-8B` shows substantial refusal behavior and is often harmed by guideline prompting.
+- `Gemma-2-9B`, `Granite-4.1`, `Mistral-7B-Instruct-v0.3`, and `Qwen-2.5-7B-Instruct` adapt more effectively to guideline prompts.
+- Matching corpus-specific guidelines usually improve `COMET` scores, while mismatched guidelines can still transfer positively when the source styles are similar.
+- `COMETkiwi` tends to favor more standardised outputs and is less robust to highly non-standard UGC translations.
+- Human evaluation confirms that guided outputs are preferred more often than default outputs for overall quality and guideline adherence.
+- Agreement between humans and metrics is moderate; `COMETkiwi` aligns best with overall quality, while `COMET` better reflects guideline adherence.
+
+## Reproducing the Experiments
+
+Key scripts and paths:
+
+- Data extraction: `slurm/extract_data.sh`
+- Model inference: `slurm/generate.slurm`, `src/generate.py`
+- Post-processing and evaluation: `slurm/evaluate.slurm`, `src/postprocess.py`, `src/evaluate.py`, `src/significance.py`, `src/aggregate.py`, `src/analyze.py`, `src/plot_delta.py`, `src/make_score_tables.py`
+- Prompts and guideline templates: `src/prompt_templates.py`
+- Model ID definitions: `src/constants.py`
+- Experiment outputs: `experiments/eamt2026/`
+
+## Repository Structure
+
+- `data/`, `data_extracted/`: raw and processed dataset files
+- `src/`: experiment and analysis scripts
+- `slurm/`: job scripts for inference, evaluation, and data preparation
+- `experiments/`: generated outputs, score tables, plots, and analysis artifacts
+- `human_eval/`: human evaluation packages, sample data, and process documentation
+
+## Paper and Citation
+
+Accepted at EAMT 2026. Preprint paper link:
+
+https://arxiv.org/abs/2512.17738
+
+
+```bibtex
+@misc{nishimwe2026goldstandardisntnecessarily,
+      title={When the Gold Standard Isn't Necessarily Standard: Challenges of Evaluating the Translation of User-Generated Content}, 
+      author={Lydia Nishimwe and Benoît Sagot and Rachel Bawden},
+      year={2026},
+      eprint={2512.17738},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2512.17738}, 
+}
 ```
-
-If this fails, install `vllm`.
-
----
-
-### 3. Install `vllm` (if needed)
-
-Derive the CUDA tag from the current PyTorch environment:
-
-```bash
-TORCH_VERSION=$(python -c "import torch; print(torch.__version__)")
-CUDA_TAG=$(python -c "import torch; print('cu' + torch.version.cuda.replace('.', ''))")
-
-echo "Torch version: $TORCH_VERSION"
-echo "CUDA tag: $CUDA_TAG"
-```
-
-Install:
-
-```bash
-pip install --user --no-cache-dir vllm --extra-index-url https://download.pytorch.org/whl/${CUDA_TAG}
-```
-
-Verify:
-
-```bash
-python -c "import vllm; print(vllm.__version__)"
-```
-
----
-
-### 4. Download Hugging Face models (on login node only)
-
-Compute nodes do **not** have internet access. You must pre-download models.
-
-```bash
-huggingface-cli login
-```
-
-Then:
-
-```bash
-python - <<'PY'
-from huggingface_hub import snapshot_download
-
-snapshot_download("Qwen/Qwen2.5-7B-Instruct")
-snapshot_download("mistralai/Mistral-7B-Instruct-v0.3")
-PY
-```
-
-Optional check:
-
-```bash
-python - <<'PY'
-from transformers import AutoTokenizer
-
-AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B-Instruct")
-AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.3")
-print("Models available in cache.")
-PY
-```
-
----
-
-### 5. Clone the repository
-
-```bash
-git clone https://github.com/lydianish-phd/evaluation-challenges.git
-cd evaluation-challenges
-```
-
----
-
-### 6. Extract the datasets
-
-```bash
-bash slurm/extract_data.sh
-```
-
-This creates:
-
-```
-data_extracted/
-```
-
----
-
-### 7. Create a working branch
-
-```bash
-git checkout -b add-mistral-qwen
-```
-
----
-
-### 8. Update the SLURM log path and account
-
-Edit the SLURM script:
-
-```bash
-slurm/generate.slurm
-```
-
-You need to update **both the log path and the account name**, as they are currently hard-coded for a specific user/project.
-
-#### 8.1 Update the log path
-
-Replace the existing line:
-
-```bash
-#SBATCH --output=/lustre/fsn1/projects/rech/ncm/udc54vm/evaluation-challenges/logs/%x/%x_%j.log
-```
-
-with your own project and user path, for example:
-
-```bash
-#SBATCH --output=/lustre/fsn1/projects/rech/<project>/<user>/evaluation-challenges/logs/%x/%x_%j.log
-```
-
-Make sure the directory exists:
-
-```bash
-mkdir -p /lustre/fsn1/projects/rech/<project>/<user>/evaluation-challenges/logs/generate
-```
-
-#### 8.2 Update the account
-
-The script currently uses an account like:
-
-```bash
-#SBATCH --account=ncm@h100
-```
-
-Here:
-
-* `ncm` is the project/account name
-* `@h100` specifies the GPU partition
-
-You must replace `ncm` with your own project/account if different. 
-
-Make sure the account matches both:
-
-* your allocation on Jean Zay
-* the GPU partition you are using
-
-⚠️ If you do not update these correctly, the job may fail to submit or logs may not be written.
-
----
-
-### 9. Verify model selection in SLURM script
-
-`slurm/generate.slurm` already targets the correct models:
-
-```bash
-for i in {3..4}
-do
-    ...
-done
-```
-
-These correspond to:
-
-* `Qwen/Qwen2.5-7B-Instruct`
-* `mistralai/Mistral-7B-Instruct-v0.3`
-
----
-
-### 10. Launch inference
-
-```bash
-sbatch slurm/generate.slurm
-```
-
-Outputs will be written to:
-
-```
-experiments/eamt2026/outputs/<model_name>/<corpus>/
-```
-
----
-
-### Notes
-
-* The script is configured for **gpu_p6 (H100)**. Do not change partition or architecture.
-* Ensure Hugging Face cache is visible from compute nodes.
-* Do not run on `main`; use your branch.
-* Commit any fixes (paths, environment tweaks) before launching large jobs.
-
-
-## Part II: Evaluation on Jean Zay
-
-After inference has completed, switch to the **evaluation** environment and run the metric computation and aggregation pipeline for the two newly added models:
-
-- `Qwen/Qwen2.5-7B-Instruct`
-- `mistralai/Mistral-7B-Instruct-v0.3`
-
-The current evaluation script is:
-
-```bash
-slurm/evaluate.slurm
-```
-
-The metric models used by `src/evaluate.py` are:
-
-* `Unbabel/wmt22-comet-da`
-* `Unbabel/wmt22-cometkiwi-da`
-
-Do **not** download or use `Unbabel/XCOMET-XL` for now.
-
----
-
-### 1. Load the evaluation environment
-
-Use the Jean Zay PyTorch 2.3.0 module for evaluation:
-
-```bash
-module purge
-module load pytorch-gpu/py3/2.3.0
-source ~/.bashrc
-```
-
----
-
-### 2. Check whether the required packages are available
-
-First check whether `unbabel-comet` and `sacrebleu` are already installed:
-
-```bash
-python -c "import comet; print('comet ok')"
-python -c "import sacrebleu; print('sacrebleu ok')"
-```
-
-If one of these fails, install both locally:
-
-```bash
-pip install --user --no-cache-dir unbabel-comet sacrebleu
-```
-
-Optional verification:
-
-```bash
-python -c "import comet, sacrebleu; print('Packages available.')"
-```
-
----
-
-### 3. Download the COMET models on the login node
-
-As with inference, compute nodes do **not** have internet access, so download the evaluation models on the login/home node first.
-
-The models to cache are:
-
-* `Unbabel/wmt22-comet-da`
-* `Unbabel/wmt22-cometkiwi-da`
-
-If needed:
-
-```bash
-huggingface-cli login
-```
-
-Then download them:
-
-```bash
-python - <<'PY'
-from comet import download_model
-
-download_model("Unbabel/wmt22-comet-da")
-download_model("Unbabel/wmt22-cometkiwi-da")
-print("COMET models downloaded.")
-PY
-```
-
-Do **not** download:
-
-```text
-Unbabel/XCOMET-XL
-```
-
----
-
-### 4. Make sure the repository branch is up to date
-
-If you are continuing from the inference step:
-
-```bash
-cd evaluation-challenges
-git checkout add-mistral-qwen
-```
-
-If needed, pull the latest changes on that branch before running evaluation.
-
----
-
-### 5. Update the SLURM log path and account
-
-Edit the SLURM script:
-
-```bash
-slurm/evaluate.slurm
-```
-
-You need to update **both the log path and the account name**, as they are currently hard-coded for a specific user/project.
-
-#### 5.1 Update the log path
-
-Replace the existing line:
-
-```bash
-#SBATCH --output=/lustre/fsn1/projects/rech/ncm/udc54vm/evaluation-challenges/logs/%x/%x_%j.log
-```
-
-with your own project and user path, for example:
-
-```bash
-#SBATCH --output=/lustre/fsn1/projects/rech/<project>/<user>/evaluation-challenges/logs/%x/%x_%j.log
-```
-
-Make sure the directory exists:
-
-```bash
-mkdir -p /lustre/fsn1/projects/rech/<project>/<user>/evaluation-challenges/logs/evaluate
-```
-
-#### 5.2 Update the account
-
-The script currently uses an account like:
-
-```bash
-#SBATCH --account=ncm@v100
-```
-
-Here:
-
-* `ncm` is the project/account name
-* `@v100` specifies the GPU partition
-
-You must replace `ncm` with your own project/account if different. 
-
-Make sure the account matches both:
-
-* your allocation on Jean Zay
-* the GPU partition you are using
-
-⚠️ If you do not update these correctly, the job may fail to submit or logs may not be written.
-
----
-
-### 6. Check the environment and paths in `slurm/evaluate.slurm`
-
-The current script already uses:
-
-* module: `pytorch-gpu/py3/2.3.0`
-* models: `Qwen/Qwen2.5-7B-Instruct` and `mistralai/Mistral-7B-Instruct-v0.3`
-* corpora: `rocsmt footweets mmtc pfsmb`
-* metrics: `bleu comet cometkiwi`
-
-It expects:
-
-* generated outputs in:
-
-```bash
-experiments/eamt2026/outputs
-```
-
-* extracted data in:
-
-```bash
-data_extracted
-```
-
-So before running evaluation, make sure inference has finished and the generated outputs are present under:
-
-```bash
-experiments/eamt2026/outputs/<model>/<corpus>/
-```
-
----
-
-### 7. Launch evaluation
-
-Submit the evaluation job:
-
-```bash
-sbatch slurm/evaluate.slurm
-```
-
-This runs:
-
-* `src/postprocess.py`
-* `src/evaluate.py`
-* `src/significance.py`
-* `src/aggregate.py`
-* `src/analyze.py`
-* `src/plot_delta.py`
-* `src/make_score_tables.py`
-
-The outputs are written under:
-
-```bash
-experiments/eamt2026/
-```
-
-including score files, plots, and tables.
-
----
-
-### 8. Finalise the branch
-
-Once both inference and evaluation have completed successfully and all expected outputs have been written to `experiments/eamt2026/`, commit and push the branch:
-
-```bash
-git status
-git add .
-git commit -m "Add Qwen and Mistral inference and evaluation outputs"
-git push origin add-mistral-qwen
-```
-
-Then open a merge request for review.
-
----
-
-### Notes
-
-* Keep this step in the **PyTorch 2.3.0** environment; do not reuse the inference environment.
-* Do not enable xCOMET for now.
-* If the COMET cache is not visible from compute nodes, you may need to redirect/cache models in a shared location before launching the job.
-* The branch to use for all changes is `add-mistral-qwen`.
-
