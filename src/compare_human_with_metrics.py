@@ -157,7 +157,12 @@ def main():
     experiment_dir = Path(args.experiment_dir)
     config = read_config(args.corpora_config)
 
-    majority_file = human_eval_dir / "human_majority_votes.csv"
+    analysis_dir = human_eval_dir / "analysis"
+
+    majority_file = analysis_dir / "human_majority_votes.csv"
+    metric_rows_path = analysis_dir / "human_majority_with_metrics.csv"
+    agreement_path = analysis_dir / "human_metric_agreement.csv"
+
     majority_rows = read_csv(majority_file)
 
     rows_with_metrics = add_metric_preferences(
@@ -167,13 +172,10 @@ def main():
         metrics=args.metrics,
     )
 
-    metric_rows_path = human_eval_dir / "human_majority_with_metrics.csv"
     fieldnames = list(rows_with_metrics[0].keys()) if rows_with_metrics else []
     write_csv(metric_rows_path, rows_with_metrics, fieldnames)
 
     agreement_rows = compute_metric_agreement(rows_with_metrics, args.metrics)
-
-    agreement_path = human_eval_dir / "human_metric_agreement.csv"
     write_csv(
         agreement_path,
         agreement_rows,

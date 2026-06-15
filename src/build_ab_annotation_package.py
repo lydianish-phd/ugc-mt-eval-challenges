@@ -246,12 +246,18 @@ def build_ab_annotation_package(
         system_b_lines.append(sys_b)
 
     output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Create subdirectories for the new structure
+    inputs_dir = output_dir / "inputs"
+    outputs_dir = output_dir / "outputs"
+    inputs_dir.mkdir(exist_ok=True)
+    outputs_dir.mkdir(exist_ok=True)
 
-    write_lines(output_dir / "source.txt", [row["source"] for row in annotation_rows])
-    write_lines(output_dir / "normed_source.txt", [row["normed_source"] for row in annotation_rows])
-    write_lines(output_dir / "reference.txt", [row["reference"] for row in annotation_rows])
-    write_lines(output_dir / "system_a.txt", system_a_lines)
-    write_lines(output_dir / "system_b.txt", system_b_lines)
+    write_lines(inputs_dir / "source.txt", [row["source"] for row in annotation_rows])
+    write_lines(inputs_dir / "normed_source.txt", [row["normed_source"] for row in annotation_rows])
+    write_lines(inputs_dir / "reference.txt", [row["reference"] for row in annotation_rows])
+    write_lines(inputs_dir / "system_a.txt", system_a_lines)
+    write_lines(inputs_dir / "system_b.txt", system_b_lines)
 
     annotation_fieldnames = [
         "item_id",
@@ -284,8 +290,8 @@ def build_ab_annotation_package(
         "system_b_file",
     ]
 
-    write_csv(output_dir / "annotation_sheet.csv", annotation_rows, annotation_fieldnames)
-    write_csv(output_dir / "annotation_key.csv", key_rows, key_fieldnames)
+    write_csv(outputs_dir / "annotation_sheet.csv", annotation_rows, annotation_fieldnames)
+    write_csv(inputs_dir / "annotation_key.csv", key_rows, key_fieldnames)
 
     print(f"Saved annotation package to: {output_dir}")
     print(f"Number of annotation items: {len(annotation_rows)}")

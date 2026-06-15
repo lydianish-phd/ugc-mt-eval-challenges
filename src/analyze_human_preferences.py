@@ -292,11 +292,14 @@ def main():
     args = parser.parse_args()
 
     human_eval_dir = Path(args.human_eval_dir)
+    analysis_dir = human_eval_dir / "analysis"
+
     majority_csv = (
         Path(args.majority_csv)
         if args.majority_csv
-        else human_eval_dir / "human_majority_votes.csv"
+        else analysis_dir / "human_majority_votes.csv"
     )
+    output_dir = analysis_dir
 
     rows = read_csv(majority_csv)
 
@@ -334,13 +337,13 @@ def main():
         )
 
     write_csv(
-        human_eval_dir / "human_preference_distribution_3class.csv",
+        output_dir / "human_preference_distribution_3class.csv",
         all_pref_rows,
         ["level", "question", "preference", "count", "proportion"],
     )
 
     write_csv(
-        human_eval_dir / "human_preference_distribution_binary.csv",
+        output_dir / "human_preference_distribution_binary.csv",
         all_binary_rows,
         [
             "level",
@@ -353,13 +356,13 @@ def main():
     )
 
     write_csv(
-        human_eval_dir / "human_quality_adherence_contingency.csv",
+        output_dir / "human_quality_adherence_contingency.csv",
         all_contingency_rows,
         ["level", "overall_pref", "guideline_pref", "count", "proportion"],
     )
 
     write_csv(
-        human_eval_dir / "human_quality_adherence_tradeoff_summary.csv",
+        output_dir / "human_quality_adherence_tradeoff_summary.csv",
         all_tradeoff_rows,
         ["level", "pattern", "count", "proportion"],
     )

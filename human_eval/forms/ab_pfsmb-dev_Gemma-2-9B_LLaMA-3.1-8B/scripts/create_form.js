@@ -1,24 +1,25 @@
-// Copy this in a Google Apps Script project to create a Google Form for human evaluation of the RoCS-MT translations. 
-// Make sure to upload the CSV file with the samples and the guideline image to your Google Drive before running the script.
+// Copy this in a Google Apps Script project to create a Google Form for human evaluation of the PFSMB translations.
+// In the repo, the annotation CSV lives in ../outputs/ and the guideline image lives in ../inputs/.
+// When copied into Google Apps Script, this script assumes both files are available in the same Drive folder.
 
-const FORM_TITLE = "RoCS-MT Human Evaluation";
+const FORM_TITLE = "PFSMB Human Evaluation";
 const CSV_FILE_NAME = "annotation_sheet.csv";
-const GUIDELINE_IMAGE_FILE_NAME = "rocsmt_guidelines.png";
+const GUIDELINE_IMAGE_FILE_NAME = "pfsmb_guidelines.png";
 
 const GUIDELINES = [
-  "1. Normalize incorrect grammar.",
-  "2. Normalize incorrect spelling.",
-  "3. Normalize word elongation (character repetitions).",
-  "4. Normalize non-standard capitalization.",
-  "5. Normalize informal abbreviations such as 'gonna', 'u' and 'bro'.",
-  "6. Expand informal acronyms such as 'brb' and 'idk', unless doing so would sound unnatural. For example, do not expand 'lol' since 'laughing out loud' is hardly used in practice.",
-  "7. Copy hashtags and subreddits as they are.",
-  "8. Copy URLs, usernames, retweet marks (RT) as they are.",
-  "9. Copy emojis and emoticons as they are.",
-  "10. Normalize atypical punctuation.",
-  "11. Translate overt profanity without censorship.",
-  "12. Translate self-censored profanity without censorship."
-];
+    "1. Normalize incorrect grammar.",
+    "2. Normalize incorrect spelling.",
+    "3. Preserve word elongation (character repetitions).",
+    "4. Preserve non-standard capitalization.",
+    "5. Preserve informal abbreviations such as 'gonna', 'u' and 'bro'.",
+    "6. Translate informal acronyms such as 'lol', 'brb' and 'idk' to their equivalents in the target language (whenever possible).",
+    "7. Translate hashtags and subreddits (while matching the original casing style) only if they have a grammatical function in the sentence. Otherwise, copy them as they are.",
+    "8. Copy URLs, usernames, retweet marks (RT) as they are.",
+    "9. Copy emojis and emoticons as they are.",
+    "10. Copy atypical punctuation.",
+    "11. Translate overt profanity without censorship.",
+    "12. Translate self-censored profanity with similar self-censorship in the target language."
+ ];
 
 function addGuidelineImage(form) {
   const files = DriveApp.getFilesByName(GUIDELINE_IMAGE_FILE_NAME);
@@ -39,7 +40,7 @@ function createHumanEvalForm() {
   const form = FormApp.create(FORM_TITLE);
 
   form.setDescription(
-    "Human evaluation of English-French machine translation of user-generated content (UGC), i.e. social media comments.\n\n" +
+    "Human evaluation of French-English machine translation of user-generated content (UGC), i.e. social media comments.\n\n" +
     "You will see the original source, a normalised version of the source, a reference translation, and two anonymous system outputs.\n\n" +
     "Note that the normalized source is only to help you understand the meaning, and that the reference might not be perfect.\n\n" +
     "TRIGGER WARNING: some samples may contain vulgar language (swear words).\n\n" +

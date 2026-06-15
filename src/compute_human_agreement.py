@@ -246,16 +246,26 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--human-eval-dir", type=str, required=True)
     parser.add_argument("--input-csv", type=str, default=None)
+    parser.add_argument("--output-dir", type=str, default=None)
     args = parser.parse_args()
 
     human_eval_dir = Path(args.human_eval_dir)
+    
+    outputs_dir = human_eval_dir / "outputs"
+    analysis_dir = human_eval_dir / "analysis"
+
     input_csv = (
         Path(args.input_csv)
         if args.input_csv
-        else human_eval_dir / "human_annotations_long.csv"
+        else outputs_dir / "human_annotations_long.csv"
+    )
+    output_base_dir = (
+        Path(args.output_dir)
+        if args.output_dir
+        else analysis_dir
     )
 
-    compute_agreement(input_csv=input_csv, output_dir=human_eval_dir)
+    compute_agreement(input_csv=input_csv, output_dir=output_base_dir)
 
 
 if __name__ == "__main__":

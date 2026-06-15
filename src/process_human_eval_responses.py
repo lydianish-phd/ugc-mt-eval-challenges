@@ -129,22 +129,25 @@ def main():
 
     human_eval_dir = Path(args.human_eval_dir)
 
+    outputs_dir = human_eval_dir / "outputs"
+    inputs_dir = human_eval_dir / "inputs"
+
     responses_tsv = (
         Path(args.responses_tsv)
         if args.responses_tsv
-        else human_eval_dir / "responses.tsv"
+        else outputs_dir / "responses.tsv"
     )
     annotation_key = (
         Path(args.annotation_key)
         if args.annotation_key
-        else human_eval_dir / "annotation_key.csv"
+        else inputs_dir / "annotation_key.csv"
     )
     output_csv = (
         Path(args.output_csv)
         if args.output_csv
-        else human_eval_dir / "human_annotations_long.csv"
+        else outputs_dir / "human_annotations_long.csv"
     )
-
+    
     process_responses(
         responses_tsv=responses_tsv,
         annotation_key_csv=annotation_key,
