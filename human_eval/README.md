@@ -26,6 +26,21 @@ The evaluation methodology is:
 - Agreement is measured with Krippendorff's alpha and pairwise Cohen's kappa.
 - Human judgements are compared to automatic metrics using COMET and COMETkiwi.
 
+## Sampling and sample sources
+
+The sampled items are stored in `human_eval/samples/` before package creation. Each sample directory contains the source sentence, a normalised source version, the reference translation, and metadata used by `src/build_ab_annotation_package.py`.
+
+For `pfsmb`, the source text is first normalised automatically by `gpt-4o-mini` using the script `slurm/normalize_src.sh`. This returns `gpt.normed_source.txt`, which is then manually post-edited to produce the final `normed_source.txt` used in the package.
+
+During package creation, the files from the sample directory are copied into the new `forms/.../inputs/` folder:
+
+- `source.txt`
+- `normed_source.txt`
+- `reference.txt`
+- `annotation_key.csv`
+
+This ensures that the human evaluation form package is built from the sampled dataset and the manually verified normalised text.
+
 ## Folder structure
 
 Each `ab_<corpus>_<models>` package follows this structure:
@@ -59,7 +74,7 @@ Each `ab_<corpus>_<models>` package follows this structure:
 
 ## Generation pipeline
 
-The scripts in `src/` are used in the following order:
+The scripts in root `src/` are used in the following order:
 
 1. `src/build_ab_annotation_package.py`
    - Builds a human evaluation package from sampled data and model outputs.
