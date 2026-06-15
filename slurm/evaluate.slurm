@@ -23,7 +23,7 @@ set -e
 # Get repo root (parent of slurm/)
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-EXPERIMENT_DIR=$REPO_DIR/experiments/experiment_049d
+EXPERIMENT_DIR=$REPO_DIR/experiments/eamt2026
 DATA_DIR=$REPO_DIR/data_extracted
 
 TOWER=Unbabel/TowerInstruct-7B-v0.2
@@ -113,4 +113,5 @@ for MODE in "vs_nllb" "vs_default"; do
 done
 
 echo "Done..."
+
 

@@ -4010,11 +4010,11 @@
         3987
     ],
     "llama_files_checked": [
-        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\experiment_049d\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\footweets\\detok.twitter.sent.en.txt.default.out.postproc",
-        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\experiment_049d\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\footweets\\detok.twitter.sent.en.txt.rocsmt.out.postproc",
-        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\experiment_049d\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\footweets\\detok.twitter.sent.en.txt.footweets.out.postproc",
-        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\experiment_049d\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\footweets\\detok.twitter.sent.en.txt.mmtc.out.postproc",
-        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\experiment_049d\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\footweets\\detok.twitter.sent.en.txt.pfsmb.out.postproc"
+        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\eamt2026\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\footweets\\detok.twitter.sent.en.txt.default.out.postproc",
+        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\eamt2026\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\footweets\\detok.twitter.sent.en.txt.rocsmt.out.postproc",
+        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\eamt2026\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\footweets\\detok.twitter.sent.en.txt.footweets.out.postproc",
+        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\eamt2026\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\footweets\\detok.twitter.sent.en.txt.mmtc.out.postproc",
+        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\eamt2026\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\footweets\\detok.twitter.sent.en.txt.pfsmb.out.postproc"
     ],
     "criterion": "skip line if any LLaMA configuration has an empty output after stripping whitespace or equals 'REFUSAL TO TRANSLATE'"
 }

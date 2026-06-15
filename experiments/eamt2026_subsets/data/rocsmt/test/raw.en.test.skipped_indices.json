@@ -1932,11 +1932,11 @@
         1914
     ],
     "llama_files_checked": [
-        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\experiment_049d\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\rocsmt\\raw.en.test.default.out.postproc",
-        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\experiment_049d\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\rocsmt\\raw.en.test.rocsmt.out.postproc",
-        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\experiment_049d\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\rocsmt\\raw.en.test.footweets.out.postproc",
-        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\experiment_049d\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\rocsmt\\raw.en.test.mmtc.out.postproc",
-        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\experiment_049d\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\rocsmt\\raw.en.test.pfsmb.out.postproc"
+        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\eamt2026\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\rocsmt\\raw.en.test.default.out.postproc",
+        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\eamt2026\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\rocsmt\\raw.en.test.rocsmt.out.postproc",
+        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\eamt2026\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\rocsmt\\raw.en.test.footweets.out.postproc",
+        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\eamt2026\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\rocsmt\\raw.en.test.mmtc.out.postproc",
+        "C:\\Users\\lydia\\OneDrive\\Documents\\evaluation-challenges\\experiments\\eamt2026\\outputs\\meta-llama/Llama-3.1-8B-Instruct\\rocsmt\\raw.en.test.pfsmb.out.postproc"
     ],
     "criterion": "skip line if any LLaMA configuration has an empty output after stripping whitespace or equals 'REFUSAL TO TRANSLATE'"
 }

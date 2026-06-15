@@ -26,7 +26,7 @@ set -e
 # Get repo root (parent of slurm/)
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-EXPERIMENT_DIR=$REPO_DIR/experiments/experiment_049d
+EXPERIMENT_DIR=$REPO_DIR/experiments/eamt2026
 DATASETS=$REPO_DIR/data_extracted
 MODELS=$REPO_DIR/models
 
@@ -99,4 +99,5 @@ do
 done
 
 echo "Done..."
+
 

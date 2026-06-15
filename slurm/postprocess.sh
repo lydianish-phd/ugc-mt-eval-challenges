@@ -5,7 +5,7 @@ source $HOME/.bash_profile
 
 set -e
 
-EXPERIMENT_DIR=$EXPERIMENTS/evaluation-challenges/experiment_049d
+EXPERIMENT_DIR=$EXPERIMENTS/evaluation-challenges/eamt2026
 CORPORA_CONFIG=$HOME/evaluation-challenges/src/config/corpora.yaml
 
 TOWER=Unbabel/TowerInstruct-7B-v0.2
@@ -29,4 +29,5 @@ for MODEL in ${ALL_MODELS[@]}; do
 done
 
 echo "Done..."
+
 

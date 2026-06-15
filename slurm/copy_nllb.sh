@@ -6,7 +6,7 @@ source $HOME/.bash_profile
 set -e
 
 SRC_EXPERIMENT_DIR=$EXPERIMENTS/evaluation-challenges/experiment_049c
-TGT_EXPERIMENT_DIR=$EXPERIMENTS/evaluation-challenges/experiment_049d
+TGT_EXPERIMENT_DIR=$EXPERIMENTS/evaluation-challenges/eamt2026
 
 CORPUS[0]=rocsmt
 LANG_PAIR[0]=eng_Latn-fra_Latn
@@ -28,3 +28,4 @@ do
 done
 
 echo "Done copying NLLB outputs to LLM experiment directory..."
+

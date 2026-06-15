@@ -205,7 +205,7 @@ sbatch slurm/generate.slurm
 Outputs will be written to:
 
 ```
-experiments/experiment_049d/outputs/<model_name>/<corpus>/
+experiments/eamt2026/outputs/<model_name>/<corpus>/
 ```
 
 ---
@@ -391,7 +391,7 @@ It expects:
 * generated outputs in:
 
 ```bash
-experiments/experiment_049d/outputs
+experiments/eamt2026/outputs
 ```
 
 * extracted data in:
@@ -403,7 +403,7 @@ data_extracted
 So before running evaluation, make sure inference has finished and the generated outputs are present under:
 
 ```bash
-experiments/experiment_049d/outputs/<model>/<corpus>/
+experiments/eamt2026/outputs/<model>/<corpus>/
 ```
 
 ---
@@ -429,7 +429,7 @@ This runs:
 The outputs are written under:
 
 ```bash
-experiments/experiment_049d/
+experiments/eamt2026/
 ```
 
 including score files, plots, and tables.
@@ -438,7 +438,7 @@ including score files, plots, and tables.
 
 ### 8. Finalise the branch
 
-Once both inference and evaluation have completed successfully and all expected outputs have been written to `experiments/experiment_049d/`, commit and push the branch:
+Once both inference and evaluation have completed successfully and all expected outputs have been written to `experiments/eamt2026/`, commit and push the branch:
 
 ```bash
 git status
@@ -457,3 +457,4 @@ Then open a merge request for review.
 * Do not enable xCOMET for now.
 * If the COMET cache is not visible from compute nodes, you may need to redirect/cache models in a shared location before launching the job.
 * The branch to use for all changes is `add-mistral-qwen`.
+
