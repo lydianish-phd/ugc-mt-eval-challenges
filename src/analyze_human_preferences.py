@@ -307,7 +307,7 @@ def main():
     all_tradeoff_rows = []
     all_contingency_rows = []
 
-    plots_dir = human_eval_dir / "preference_plots"
+    plots_dir = human_eval_dir / "plots"
 
     # The dir is name is like ab_rocsmt_... or ab_pfsmb-dev_..., so we can extract the corpus name from it.
     corpus = human_eval_dir.name.split("_")[1].split("-")[0] if "_" in human_eval_dir.name else None
