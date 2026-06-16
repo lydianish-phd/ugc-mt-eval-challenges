@@ -186,9 +186,11 @@ def plot_preference_distribution(rows: list[dict], output_path: Path, title: str
     questions = [
         ("majority_overall_pref", "Overall quality"),
         ("majority_guideline_pref", "Guideline adherence"),
+        ("comet_pref", "COMET"),
+        ("cometkiwi_pref", "COMETKiwi"),
     ]
 
-    fig, ax = plt.subplots(figsize=(4.1, 3))
+    fig, ax = plt.subplots(figsize=(6.75, 3))
 
     x_positions = list(range(len(questions)))
     bottoms = [0.0 for _ in questions]
@@ -297,7 +299,7 @@ def main():
     majority_csv = (
         Path(args.majority_csv)
         if args.majority_csv
-        else analysis_dir / "human_majority_votes.csv"
+        else analysis_dir / "human_majority_with_metrics.csv"
     )
     output_dir = analysis_dir
 
