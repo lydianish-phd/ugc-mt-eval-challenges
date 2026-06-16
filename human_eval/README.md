@@ -2,6 +2,16 @@
 
 This folder documents the human evaluation package structure and the script pipeline used to prepare, process, analyse, and compare human judgements for the UGC translation evaluation.
 
+## Example form snapshots
+
+### Guideline page
+
+![Guidelines screenshot](forms/ab_rocsmt_Gemma-2-9B_LLaMA-3.1-8B/plots/Screenshot-Guidelines.png)
+
+### Sample evaluation page
+
+![Sample screenshot](forms/ab_rocsmt_Gemma-2-9B_LLaMA-3.1-8B/plots/Screenshot-Sample1.png)
+
 ## Overview
 
 The repository includes two main human evaluation packages:
@@ -131,16 +141,6 @@ In the repo layout, those files are organised as:
 - `outputs/annotation_sheet.csv`
 
 When copying the script into Google Apps Script, upload the CSV and image together in the same Drive folder.
-
-## Example form snapshots
-
-### Guideline page
-
-![Guidelines screenshot](forms/ab_rocsmt_Gemma-2-9B_LLaMA-3.1-8B/plots/Screenshot-Guidelines.png)
-
-### Sample evaluation page
-
-![Sample screenshot](forms/ab_rocsmt_Gemma-2-9B_LLaMA-3.1-8B/plots/Screenshot-Sample1.png)
 
 ## Notes
 
