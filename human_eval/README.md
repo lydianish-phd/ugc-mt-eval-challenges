@@ -142,8 +142,3 @@ In the repo layout, those files are organised as:
 
 When copying the script into Google Apps Script, upload the CSV and image together in the same Drive folder.
 
-## Notes
-
-- `human_eval/samples/` contains sample data directories used to generate the form packages.
-- The `human_eval/forms/` folder is the canonical location for completed human evaluation packages.
-- The `human_eval/README.md` file documents the structure and pipeline for easy reproduction.
