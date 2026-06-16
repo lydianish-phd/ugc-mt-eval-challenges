@@ -13,7 +13,7 @@ We evaluate translation performance on four parallel UGC datasets and measure th
 Key components:
 
 - Baseline: `NLLB-200-3.3B`
-- Instruction-tuned LLMs: `Gemma-2-9B`, `Granite-4.1`, `LLaMA-3.1-8B`, `Mistral-7B-Instruct-v0.3`, `Qwen-2.5-7B-Instruct`, and `Tower-4.1`
+- Instruction-tuned LLMs: `Gemma-2-9B`, `Granite-4.1-8B`, `LLaMA-3.1-8B`, `Mistral-7B-v0.3`, `Qwen-2.5-7B`, and `Tower-7B-v0.2`
 - Controlled generation with 12 corpus-specific translation guidelines
 - Automatic evaluation with reference-based `COMET`, reference-less `COMETkiwi`, and surface-level `BLEU`
 - Human evaluation for `RoCSMT` and `PFSMB` datasets
@@ -35,7 +35,7 @@ We compare a strong encoder-decoder baseline with a suite of instruction-tuned d
 
 - Baseline: `NLLB-200-3.3B`
 - Instruction-tuned LLMs: `Gemma-2-9B`, `Granite-4.1-8B`, `LLaMA-3.1-8B`, `Mistral-7B-v0.3`, `Qwen-2.5-7B`, `Tower-7B-v0.2`
-- Note: `Tower-4.1` is specifically fine-tuned for translation tasks
+- Note: `Tower-7B-v0.2` is specifically fine-tuned for translation tasks
 
 ### Inference Details
 
