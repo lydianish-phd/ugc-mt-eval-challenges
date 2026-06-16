@@ -2,6 +2,16 @@
 
 This folder documents the human evaluation package structure and the script pipeline used to prepare, process, analyse, and compare human judgements for the UGC translation evaluation.
 
+## Example form snapshots
+
+### Guideline page
+
+![Guidelines screenshot](forms/ab_rocsmt_Gemma-2-9B_LLaMA-3.1-8B/plots/Screenshot-Guidelines.png)
+
+### Sample evaluation page
+
+![Sample screenshot](forms/ab_rocsmt_Gemma-2-9B_LLaMA-3.1-8B/plots/Screenshot-Sample1.png)
+
 ## Overview
 
 The repository includes two main human evaluation packages:
@@ -132,18 +142,3 @@ In the repo layout, those files are organised as:
 
 When copying the script into Google Apps Script, upload the CSV and image together in the same Drive folder.
 
-## Example form snapshots
-
-### Guideline page
-
-![Guidelines screenshot](forms/ab_rocsmt_Gemma-2-9B_LLaMA-3.1-8B/plots/Screenshot-Guidelines.png)
-
-### Sample evaluation page
-
-![Sample screenshot](forms/ab_rocsmt_Gemma-2-9B_LLaMA-3.1-8B/plots/Screenshot-Sample1.png)
-
-## Notes
-
-- `human_eval/samples/` contains sample data directories used to generate the form packages.
-- The `human_eval/forms/` folder is the canonical location for completed human evaluation packages.
-- The `human_eval/README.md` file documents the structure and pipeline for easy reproduction.
