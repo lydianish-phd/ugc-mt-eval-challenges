@@ -10,7 +10,7 @@ This folder documents the human evaluation package structure and the script pipe
 
 ### Sample evaluation page
 
-![Sample screenshot](forms/ab_rocsmt_Gemma-2-9B_LLaMA-3.1-8B/plots/Screenshot-Sample1.png)
+![Sample screenshot](forms/ab_rocsmt_Gemma-2-9B_LLaMA-3.1-8B/plots/Screenshot-Sample4.png)
 
 ## Overview
 
