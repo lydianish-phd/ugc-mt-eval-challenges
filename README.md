@@ -1,10 +1,14 @@
-﻿# When the Gold Standard Isn't Necessarily Standard: Challenges of Evaluating the Translation of User-Generated Content
+﻿# Challenges of Evaluating the Translation of User-Generated Content
 
-[Accepted at EAMT 2026 — Preprint](https://arxiv.org/abs/2512.17738)
+This repository contains the code, data organization, and experiment assets for a study on translating user-generated content (UGC) with both a strong neural machine translation baseline and instruction-tuned large language models.
+
+This work extends **Experiment VII** from **Chapter 9: Challenges of evaluating UGC Machine Translation: A Case Study on LLMs** of my PhD thesis, and has been published at the EAMT 2026 conference.
+
+📄 Read the preprint here: [When the Gold Standard Isn't Necessarily Standard: Challenges of Evaluating the Translation of User-Generated Content](https://arxiv.org/abs/2512.17738)
 
 Authors: Lydia Nishimwe, Benoît Sagot, Rachel Bawden
 
-This repository contains the code, data organization, and experiment assets for a study on translating user-generated content (UGC) with both a strong neural machine translation baseline and instruction-tuned large language models.
+🎓 Read the full thesis here: [Robust Neural Machine Translation of User-Generated Content](https://theses.hal.science/tel-05448644).
 
 ## Overview
 
