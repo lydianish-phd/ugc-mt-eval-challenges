@@ -1,0 +1,5 @@
+level,measure,n_ties,n_exact_matches,n_non_exact_matches,proportion_exact_matches_among_ties
+all,majority_overall_pref,27,12,15,0.4444444444444444
+all,majority_guideline_pref,40,12,28,0.3
+all,comet_pref,16,12,4,0.75
+all,cometkiwi_pref,19,12,7,0.631578947368421

@@ -182,7 +182,37 @@ def group_rows(rows: list[dict], group_col: str | None) -> dict[str, list[dict]]
     return groups
 
 
-def plot_preference_distribution(rows: list[dict], output_path: Path, title: str) -> None:
+def load_tie_breakdown(ties_csv: Path) -> dict:
+    """
+    Returns:
+        {
+            "majority_overall_pref": {
+                "exact_match_ties": n,
+                "non_exact_match_ties": n,
+            },
+            ...
+        }
+    """
+    rows = read_csv(ties_csv)
+
+    breakdown = {}
+
+    for r in rows:
+        breakdown[r["measure"]] = {
+            "exact_match_ties": int(r["n_exact_matches"]),
+            "non_exact_match_ties": int(r["n_non_exact_matches"]),
+        }
+
+    return breakdown
+
+
+def plot_preference_distribution(
+    rows: list[dict],
+    tie_breakdown: dict,
+    output_path: Path,
+    title: str,
+) -> None:
+
     questions = [
         ("majority_overall_pref", "Overall quality"),
         ("majority_guideline_pref", "Guideline adherence"),
@@ -190,49 +220,119 @@ def plot_preference_distribution(rows: list[dict], output_path: Path, title: str
         ("cometkiwi_pref", "COMETKiwi"),
     ]
 
-    fig, ax = plt.subplots(figsize=(6.75, 3))
+    categories = [
+        "guided",
+        "tie_exact",
+        "tie_non_exact",
+        "default",
+    ]
+
+    category_labels = {
+        "guided": "Guided",
+        "tie_exact": "Tie (exact match)",
+        "tie_non_exact": "Tie (non-exact)",
+        "default": "Default",
+    }
+
+    fig, ax = plt.subplots(figsize=(7.5, 3.2))
 
     x_positions = list(range(len(questions)))
-    bottoms = [0.0 for _ in questions]
+    bottoms = [0.0] * len(questions)
 
-    for pref in PREFERENCE_ORDER:
+    for category in categories:
+
         values = []
+
         for col, _ in questions:
+
             labels = [
                 normalise_pref(r[col])
                 for r in rows
                 if normalise_pref(r[col]) in VALID_LABELS
             ]
+
             counts = Counter(labels)
             total = sum(counts.values())
-            values.append(100 * counts[pref] / total if total else 0.0)
 
-        bars = ax.bar(x_positions, values, bottom=bottoms, label=pref, width=0.5)
+            guided = counts["guided"]
+            default = counts["default"]
+            ties = counts["tie"]
+
+            exact_ties = tie_breakdown[col]["exact_match_ties"]
+            non_exact_ties = tie_breakdown[col]["non_exact_match_ties"]
+
+            # sanity check
+            if exact_ties + non_exact_ties != ties:
+                raise ValueError(
+                    f"{col}: tie mismatch "
+                    f"({exact_ties}+{non_exact_ties}!={ties})"
+                )
+
+            bucket_counts = {
+                "guided": guided,
+                "tie_exact": exact_ties,
+                "tie_non_exact": non_exact_ties,
+                "default": default,
+            }
+
+            values.append(
+                100 * bucket_counts[category] / total if total else 0.0
+            )
+
+        bars = ax.bar(
+            x_positions,
+            values,
+            bottom=bottoms,
+            label=category_labels[category],
+            width=0.5,
+        )
 
         for bar, value, bottom in zip(bars, values, bottoms):
-            if value > 0:
+            if value >= 4:
                 ax.text(
                     bar.get_x() + bar.get_width() / 2,
                     bottom + value / 2,
                     f"{value:.1f}%",
                     ha="center",
                     va="center",
-                    fontsize=9,
+                    fontsize=8,
                 )
 
-        bottoms = [b + v for b, v in zip(bottoms, values)]
+        bottoms = [
+            b + v
+            for b, v in zip(bottoms, values)
+        ]
 
     ax.set_xticks(x_positions)
     ax.set_xticklabels([label for _, label in questions])
+
     ax.set_ylabel("Percentage")
     ax.set_ylim(0, 100)
-    ax.legend(frameon=False, loc="center left", bbox_to_anchor=(0.98, 0.5))
+
+    ax.legend(
+        frameon=False,
+        loc="center left",
+        bbox_to_anchor=(0.98, 0.5),
+    )
+
     ax.set_title(title)
 
     fig.tight_layout()
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, format="pdf", bbox_inches="tight", pad_inches=0.02)
+
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    fig.savefig(
+        output_path,
+        format="pdf",
+        bbox_inches="tight",
+        pad_inches=0.02,
+    )
+
     plt.close(fig)
+
 
 def plot_quality_adherence_heatmap(rows: list[dict], output_path: Path, title: str) -> None:
     matrix = []
@@ -310,6 +410,7 @@ def main():
     output_dir = analysis_dir
 
     rows = read_csv(majority_csv)
+    tie_breakdown = load_tie_breakdown(ties_csv)
 
     groups = group_rows(rows, args.group_by)
 
@@ -335,8 +436,9 @@ def main():
 
         plot_preference_distribution(
             group,
+            tie_breakdown,
             plots_dir / f"preference_distribution_{safe_level}.pdf",
-            title=CORPUS_LABELS.get(corpus, corpus) if corpus else safe_level
+            title=CORPUS_LABELS.get(corpus, corpus) if corpus else safe_level,
         )
         plot_quality_adherence_heatmap(
             group,

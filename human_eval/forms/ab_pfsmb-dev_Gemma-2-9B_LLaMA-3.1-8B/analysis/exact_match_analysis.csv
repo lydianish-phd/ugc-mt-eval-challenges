@@ -1,0 +1,5 @@
+level,measure,n_exact_matches,n_ties,proportion_ties_among_exact_matches
+all,majority_overall_pref,10,10,1.0
+all,majority_guideline_pref,10,10,1.0
+all,comet_pref,10,10,1.0
+all,cometkiwi_pref,10,10,1.0
