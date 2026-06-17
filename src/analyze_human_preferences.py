@@ -284,6 +284,7 @@ def main():
     )
     parser.add_argument("--human-eval-dir", type=str, required=True)
     parser.add_argument("--majority-csv", type=str, default=None)
+    parser.add_argument("--ties-csv", type=str, default=None)
     parser.add_argument(
         "--group-by",
         type=str,
@@ -300,6 +301,11 @@ def main():
         Path(args.majority_csv)
         if args.majority_csv
         else analysis_dir / "human_majority_with_metrics.csv"
+    )
+    ties_csv = (
+        Path(args.ties_csv)
+        if args.ties_csv
+        else analysis_dir / "tie_analysis_summary.csv"
     )
     output_dir = analysis_dir
 
