@@ -4,7 +4,7 @@ This repository contains the code, data organization, and experiment assets for 
 
 This work extends **Experiment VII** from **Chapter 9: Challenges of evaluating UGC Machine Translation: A Case Study on LLMs** of my PhD thesis, and has been published at the EAMT 2026 conference.
 
-📄 Read the preprint here: [When the Gold Standard Isn't Necessarily Standard: Challenges of Evaluating the Translation of User-Generated Content](https://arxiv.org/abs/2512.17738)
+📄 Read the article here: [When the Gold Standard Isn't Necessarily Standard: Challenges of Evaluating the Translation of User-Generated Content](https://aclanthology.org/2026.eamt-1.30/)
 
 Authors: Lydia Nishimwe, Benoît Sagot, Rachel Bawden
 
@@ -120,19 +120,47 @@ Key scripts and paths:
 
 ## Paper and Citation
 
-Accepted at EAMT 2026. Preprint paper link:
+Presented at EAMT 2026. Conference paper link:
 
-https://arxiv.org/abs/2512.17738
-
+https://aclanthology.org/2026.eamt-1.30
 
 ```bibtex
-@misc{nishimwe2026goldstandardisntnecessarily,
-      title={When the Gold Standard Isn't Necessarily Standard: Challenges of Evaluating the Translation of User-Generated Content}, 
-      author={Lydia Nishimwe and Benoît Sagot and Rachel Bawden},
-      year={2026},
-      eprint={2512.17738},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2512.17738}, 
+@inproceedings{nishimwe-etal-2026-gold,
+    title = "When the Gold Standard Isn{'}t Necessarily Standard: Challenges of Evaluating the Translation of User-Generated Content",
+    author = "Nishimwe, Lydia  and
+      Sagot, Beno{\^i}t  and
+      Bawden, Rachel",
+    editor = "Shterionov, Dimitar  and
+      Vanmassenhove, Eva  and
+      De Sisto, Mirella  and
+      Blain, Fred  and
+      Pourmostafa Roshan Sharami, Javad  and
+      Lepp, Lisa  and
+      Manna, Chiara  and
+      Rescigno, Argentina Anna  and
+      Karakanta, Alina  and
+      Rigouts Terryn, Ayla  and
+      Lardelli, Manuel  and
+      Resende, Natalia  and
+      Murgolo, Elena  and
+      Hackenbuchner, Jani{\c{c}}a  and
+      Zaretskaya, Anna  and
+      Espl{\`a}-Gomis, Miquel  and
+      Etchegoyhen, Thierry  and
+      Gromann, Dagmar  and
+      Bawden, Rachel  and
+      Haddow, Barry  and
+      Szoc, Sara  and
+      Forcada, Mikel  and
+      Moniz, Helena",
+    booktitle = "Proceedings of the 26th Annual Conference of the {E}uropean Association for Machine Translation (Volume 1)",
+    month = jun,
+    year = "2026",
+    address = "Tilburg, The Netherlands",
+    publisher = "European Association for Machine Translation",
+    url = "https://aclanthology.org/2026.eamt-1.30/",
+    pages = "473--495",
+    ISBN = "9789403901411",
+    abstract = "User-generated content (UGC) is characterised by frequent use of non-standard language, from spelling errors to expressive choices such as slang, character repetitions, and emojis. This makes evaluating UGC translation challenging: what counts as a ``good'' translation depends on the desired standardness level of the output. To explore this, we examine the human translation guidelines of four UGC datasets, and derive a taxonomy of twelve non-standard phenomena and five translation actions (NORMALISE, COPY, TRANSFER, OMIT, CENSOR). Our analysis reveals notable differences in how UGC is treated, resulting in a spectrum of standardness in reference translations. We show that translation scores of large language models are highly sensitive to prompts with explicit UGC translation instructions, and that they improve when they align with the dataset guidelines. We argue that fair evaluation requires both models and metrics to be aware of translation guidelines. Finally, we call for clear guidelines during dataset creation and for the development of controllable, guideline-aware evaluation frameworks for UGC translation."
 }
 ```
